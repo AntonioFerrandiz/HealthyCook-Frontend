@@ -1,40 +1,63 @@
 <div class="side-nav-container" [class.is-mobile]="mobileQuery.matches">
-    <mat-toolbar class="toolbar" (click)="closeDialog()">
+    <mat-toolbar class="toolbar" (click)="closeDialog()" [ngStyle]="{'background-color': '#EEEEEE'}">
         <button mat-icon-button (click)="snav.toggle()">
             <mat-icon>menu</mat-icon>
         </button>
         <h1 class="app-name">EveryoneCanCook</h1>
+        <span class="example-spacer"></span>
+        <span flex></span>
+        <div>
+            <button mat-icon-button>
+                <mat-icon>bookmark_border</mat-icon>
+            </button>
+            <button mat-icon-button>
+                <mat-icon>favorite_border</mat-icon>
+            </button>
+            <button mat-icon-button>
+                <mat-icon style="font-size: 2.5rem" [ngStyle]="{'color': '#25C54D'}">account_circle</mat-icon>
+            </button>
+        </div>
     </mat-toolbar>
 
-    <mat-sidenav-container class="sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 56 : 0" >
+    <mat-sidenav-container class="sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
         <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches"
             fixedTopGap="56">
-            <mat-nav-list (click)="closeDialog()">
-                <div>
+            <mat-nav-list (click)="closeDialog()" style="width: 15rem;">
+                <!-- <div>
                     <mat-card>
                         <mat-card-header>
-                            <!-- <img mat-card-avatar class="header-image" src="{{ profilePictureURL }}"> -->
+                            <img mat-card-avatar class="header-image" src="{{ profilePictureURL }}">
                             <mat-card-title>username</mat-card-title>
                             <mat-card-subtitle ><a >Edit profile</a></mat-card-subtitle>
                         </mat-card-header>
                     </mat-card>
-                </div>
-                <mat-list-item >
+                </div> -->
+                <mat-list-item routerLink="/home">
                     <mat-icon mat-list-icon>home</mat-icon>
                     <span>Home</span>
                 </mat-list-item>
-                
-                <mat-list-item>
+
+                <mat-list-item routerLink="/home">
+                    <mat-icon mat-list-icon>perm_contact_calenda</mat-icon>
+                    <span>Dispensa</span>
+                </mat-list-item>
+
+                <mat-list-item routerLink="/recipes">
                     <mat-icon mat-list-icon>perm_contact_calenda</mat-icon>
                     <span>Recipes</span>
                 </mat-list-item>
 
-                <mat-list-item >
+                <mat-list-item routerLink="/restaurants">
+                    <mat-icon mat-list-icon>perm_contact_calenda</mat-icon>
+                    <span>Restaurants</span>
+                </mat-list-item>
+
+                <mat-list-item routerLink="/home">
                     <mat-icon mat-list-icon>person</mat-icon>
                     <span>Profile</span>
                 </mat-list-item>
 
-                <mat-list-item >
+                <mat-list-item>
                     <mat-icon mat-list-icon>logout</mat-icon>
                     <span>Logout</span>
                 </mat-list-item>
