@@ -1,1 +1,28 @@
-<p>recipes works!</p>
+<div class="container" style="min-height: 100vh;">
+    <div class="recipes-container">
+        <div class="popular-recipes-container">
+            <h2>Las más populares:</h2>
+            <p>Aún no hay recetas populares!</p>
+        </div>
+        <div class="today-recipes-container">
+            <h2>Recetas de hoy:</h2>
+        </div>
+        <div class="verfied-recipes-container">
+            <h2>Verificadas por el chef:</h2>
+            <div class="row">
+                <div class="col" *ngFor="let item of recipesListPublished; let i = index;">
+                    <mat-card class="recipe-card">
+                        <mat-card-subtitle>{{ recipesListPublished[i]['user'].username }}</mat-card-subtitle>
+                        <mat-card-title>{{ recipesListPublished[i].name }}</mat-card-title>
+                        <mat-card-content>
+                            <p>{{ recipesListPublished[i].description }}</p>
+                        </mat-card-content>
+                        <mat-card-actions>
+                            <button mat-button class="btn-recipe-card" routerLink="view-recipe/{{ recipesListPublished[i].id }}">Ver receta</button>
+                        </mat-card-actions>
+                    </mat-card>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
