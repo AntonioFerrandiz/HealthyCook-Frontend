@@ -2,12 +2,15 @@
 
 /* font-family: 'Oxygen', sans-serif; */
 /* 300 400 700 */
+.container-menu-general{
+    font-family: 'Oxygen', sans-serif;
+    margin: 5rem 0;
+}
 .container-menu {
     height: 11.25rem;
     width: 22rem;
     border-radius: 1rem;
     background-color: #707070;
-    font-family: 'Oxygen', sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -35,7 +38,6 @@
     background-size: cover;
     object-fit: contain;
 }
-
 .img-2:hover{
     background-size: 105%;
     background-repeat: no-repeat;
@@ -50,7 +52,6 @@
     background-size: cover;
     object-fit: contain;
 }
-
 .img-3:hover{
     background-size: 105%;
     background-repeat: no-repeat;
@@ -66,7 +67,6 @@
     background-color: rgba(0, 0, 0, .6);
     padding: .25rem 0 0 2rem;
 }
-
 .container-menu-text span {
     font-size: 1rem;
     font-weight: 600;
@@ -77,4 +77,70 @@
     color: #FFFFFF;
     border: 1px solid white;
     border-radius: 100%;
+}
+
+.search-container-general{
+    font-family: 'Oxygen', sans-serif;
+    margin: 5rem 0;
+}
+.search-container{
+    text-align: center;
+    padding: 2rem 0;
+}
+.search-container h2{
+    font-size: 4rem;
+}
+.search-container p{
+    font-size: 1.5rem;
+    font-weight: 300;
+}
+
+::ng-deep .mat-form-field-infix {
+  top: -3px;
+}
+.my-icon {
+    z-index: 1;
+    position: relative;
+}
+.input-group{
+    padding: 0 10rem;
+}
+.input-group-prepend span{
+    padding: 1rem .5rem;
+}
+.form-control {
+    background-color: #EEE;
+    border: none ;
+    padding: 1rem .5rem;
+}
+.input-group-append button{
+    padding: 1rem .5rem;
+}
+.form-control:focus {
+    border: none;
+    box-shadow: none;
+}
+.input-group-text{
+    background-color: #EEE;
+    border: none ;
+}
+
+.btn-background{
+    background-color: #EEE;
+    border-top-right-radius: 1.875rem;
+    border-bottom-right-radius: 1.875rem;
+}
+.btn-add-ingredient mat-icon{
+    border: 1px solid #000;
+    border-radius: .25rem;
+    vertical-align: top !important;
+
+}
+.btn-recipe-search{
+    background-color: #E74E00;
+    color: #FFFFFF;
+    width: 15rem;
+    padding-left: 2rem !important;
+    border-radius: 1.875rem;
+    font-weight: 700;
 }

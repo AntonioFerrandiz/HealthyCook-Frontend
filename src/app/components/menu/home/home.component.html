@@ -1,35 +1,68 @@
-<div class="container mt-5">
-    <div class="row">
-        <div class="col">
-            <div class="container-menu img img-1">
-                <div class="container-menu-text">
-                    <div class="row">
-                        <div class="col"><span>Mi Despensa</span></div>
-                        <div class="col-auto" style="padding-right: 5rem;"><mat-icon>chevron_right</mat-icon></div>
+<div class="container">
+    <div class="container-menu-general">
+        <div class="row">
+            <div class="col">
+                <div class="container-menu img img-1">
+                    <div class="container-menu-text">
+                        <div class="row">
+                            <div class="col"><span>Mi Despensa</span></div>
+                            <div class="col-auto" style="padding-right: 5rem;">
+                                <mat-icon>chevron_right</mat-icon>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="col">
-            <div class="container-menu img img-2">
-                <div class="container-menu-text">
-                    <div class="row">
-                        <div class="col"><span>Recetas</span></div>
-                        <div class="col-auto" style="padding-right: 5rem;"><mat-icon>chevron_right</mat-icon></div>
+            <div class="col">
+                <div class="container-menu img img-2">
+                    <div class="container-menu-text">
+                        <div class="row">
+                            <div class="col"><span>Recetas</span></div>
+                            <div class="col-auto" style="padding-right: 5rem;">
+                                <mat-icon>chevron_right</mat-icon>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="col">
-            <div class="container-menu img img-3">
-                <div class="container-menu-text">
-                    <div class="row">
-                        <div class="col"><span>Restaurantes</span></div>
-                        <div class="col-auto" style="padding-right: 5rem;"><mat-icon>chevron_right</mat-icon></div>
+            <div class="col">
+                <div class="container-menu img img-3">
+                    <div class="container-menu-text">
+                        <div class="row">
+                            <div class="col"><span>Restaurantes</span></div>
+                            <div class="col-auto" style="padding-right: 5rem;">
+                                <mat-icon>chevron_right</mat-icon>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
+    <div class="search-container-general">
+        <div class="search-container">
+            <h2>¿No sabes qué cocinar?</h2>
+            <p>Ingresa los ingredientes que tienes en tu despensa</p>
+        </div>
+        <!-- <mat-form-field appearance="outline" >
+            <input matInput placeholder="Añade un ingrediente">
+            <mat-icon matPrefix class="my-icon">fastfood</mat-icon>
+        </mat-form-field> -->
+
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text"><mat-icon>fastfood</mat-icon></span>
+            </div>
+            <input type="text" class="form-control" >
+            <div class="input-group-append">
+                <button class="input-group-text btn-add-ingredient"><mat-icon>add</mat-icon></button>
+            </div>
+            <div class="input-group-append">
+                <div class="btn-background"><button class="input-group-text btn-recipe-search">Buscar recetas</button></div>
+            </div>
+        </div>
+
+
+    </div>
 </div>
-prubea
