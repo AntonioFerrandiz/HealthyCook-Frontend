@@ -1,3 +1,4 @@
+
 <div class="container">
     <div class="container-menu-general">
         <div class="row">
@@ -14,7 +15,7 @@
                 </div>
             </div>
             <div class="col">
-                <div class="container-menu img img-2"  (click)="redirectToRecipes()">
+                <div class="container-menu img img-2" (click)="redirectToRecipes()">
                     <div class="container-menu-text">
                         <div class="row">
                             <div class="col"><span>Recetas</span></div>
@@ -26,7 +27,7 @@
                 </div>
             </div>
             <div class="col">
-                <div class="container-menu img img-3"  (click)="redirectToRestaurants()">
+                <div class="container-menu img img-3" (click)="redirectToRestaurants()">
                     <div class="container-menu-text">
                         <div class="row">
                             <div class="col"><span>Restaurantes</span></div>
@@ -45,21 +46,42 @@
             <h2>¿No sabes qué cocinar?</h2>
             <p>Ingresa los ingredientes que tienes en tu despensa</p>
         </div>
-        <!-- <mat-form-field appearance="outline" >
-            <input matInput placeholder="Añade un ingrediente">
-            <mat-icon matPrefix class="my-icon">fastfood</mat-icon>
-        </mat-form-field> -->
-
         <div class="input-group mb-3">
             <div class="input-group-prepend">
-                <span class="input-group-text"><mat-icon>fastfood</mat-icon></span>
+                <span class="input-group-text">
+                    <mat-icon>fastfood</mat-icon>
+                </span>
             </div>
-            <input type="text" class="form-control" >
+            <input type="text" class="form-control">
             <div class="input-group-append">
-                <button class="input-group-text btn-add-ingredient"><mat-icon>add</mat-icon></button>
+                <button class="input-group-text btn-add-ingredient">
+                    <mat-icon>add</mat-icon>
+                </button>
             </div>
             <div class="input-group-append">
-                <div class="btn-background"><button class="input-group-text btn-recipe-search">Buscar recetas</button></div>
+                <div class="btn-background"><button class="input-group-text btn-recipe-search">Buscar recetas</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="recipes-container-general">
+        <div class="row">
+            <div class="col" *ngFor="let item of data; let i = index">
+                <div class="recipes-card">
+                    <span>
+                        <img src="../../../../assets/img/home-recipe-1.png" class="recipe-photo ">
+                    </span>
+                    <div class="bottom-container">
+                        <div class="recipes-card-content">
+                            <div class="recipes-card-header">
+                                <h3>{{ data[i].name }}</h3>
+                                <p>Esta es una receta</p>
+                                <span>{{ data[i].calories }} calorias</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
