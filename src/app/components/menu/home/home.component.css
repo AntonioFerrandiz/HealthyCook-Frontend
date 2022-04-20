@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css2?family=Oxygen:wght@300;400;700&display=swap');
+
+/* font-family: 'Oxygen', sans-serif; */
+/* 300 400 700 */
+.container-menu {
+    height: 11.25rem;
+    width: 22rem;
+    border-radius: 1rem;
+    background-color: #707070;
+    font-family: 'Oxygen', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.img-1{
+    background: url('src\assets\img\home-image-1.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    object-fit: contain;
+}
+.img-2{
+    background: url('src\assets\img\home-image-2.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    object-fit: contain;
+}
+.img-3{
+    background: url('src\assets\img\home-image-3.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    object-fit: contain;
+}
+
+.container-menu-text {
+    margin-top: 10vh;
+    padding-left: 2rem;
+    width: 100%;
+    background-color: #000000;
+    opacity: .5;
+}
+
+.container-menu-text span {
+    font-size: 1rem;
+    color: #FFFFFF;
+}
