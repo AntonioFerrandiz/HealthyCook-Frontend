@@ -1,0 +1,49 @@
+<div style="min-height: 90vh;" class="container">
+    <div class="row">
+        <div class="col">
+            <div class="recipe-container">
+                <span>{{ recipe['user'].username }}</span>
+                <h2>{{ recipe['name'] }}</h2>
+                <div class="recipe-container-border"></div>
+            </div>
+            <div class="recipe-description-container">
+                <p> {{ recipe['description'] }}</p>
+            </div>
+            <div class="recipe-details-container">
+                <div class="row">
+                    <div class="col-auto recipe-details">
+                        <h4>Dificultad</h4>
+                        <span> {{ recipeDetails['difficulty'] }}</span>
+                    </div>
+                    <div class="col-auto recipe-details">
+                        <h4>Porciones</h4>
+                        <span> {{ recipeDetails['servings'] }}</span>
+                    </div>
+                    <div class="col-auto recipe-details">
+                        <h4>Tiempo de preparación</h4>
+                        <span> {{ recipeDetails['preparationTime'] }} {{ recipeDetails['timePeriod'] }}</span>
+                    </div>
+                    <div class="col-auto recipe-details">
+                        <h4>Calorias</h4>
+                        <span> {{ recipeDetails['calories'] }} Cal</span>
+                    </div>
+                </div>
+            </div>
+            <div class="recipe-tabs-container">
+                <mat-tab-group>
+                    <mat-tab label="Preparación">
+                        <p class="mat-tab-contain">{{ recipe['preparation'] }}</p>
+                    </mat-tab>
+                    <mat-tab label="Ingredientes">
+                        <p class="mat-tab-contain">Aun en proceso de construcción xd</p>
+                    </mat-tab>
+                  </mat-tab-group>
+            </div>
+        </div>
+        <div class="col">
+            <div class="recipe-container-img">
+                <span>{{ recipe['name']}} imagen</span>
+            </div>
+        </div>
+    </div>
+</div>
