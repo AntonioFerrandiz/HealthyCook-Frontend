@@ -10,6 +10,8 @@ import { HomeComponent } from './components/menu/home/home.component';
 import { SharedModule } from './shared/shared.module';
 import { RecipesComponent } from './components/menu/home/recipes/recipes.component';
 import { RestaurantsComponent } from './components/menu/home/restaurants/restaurants.component';
+import { HttpClientModule } from '@angular/common/http';
+import { ViewRecipeComponent } from './components/menu/home/recipes/view-recipe/view-recipe.component';
 
 @NgModule({
   declarations: [
@@ -18,13 +20,14 @@ import { RestaurantsComponent } from './components/menu/home/restaurants/restaur
     MenuComponent,
     UserComponent,
     RecipesComponent,
-    RestaurantsComponent
+    RestaurantsComponent,
+    ViewRecipeComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    SharedModule
+    SharedModule, HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
