@@ -18,13 +18,32 @@
     background-repeat: no-repeat;
     background-size: cover;
     object-fit: contain;
+    transition: .3s;
+    
 }
+.img-1:hover{
+    background-size: 105%;
+    background-repeat: no-repeat;
+    object-fit: contain;
+    transform: scale(1);
+    transition: all 150ms ease-in-out;
+}
+
 .img-2{
     background: url('src\assets\img\home-image-2.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     object-fit: contain;
 }
+
+.img-2:hover{
+    background-size: 105%;
+    background-repeat: no-repeat;
+    object-fit: contain;
+    transform: scale(1);
+    transition: all 150ms ease-in-out;
+}
+
 .img-3{
     background: url('src\assets\img\home-image-3.jpg');
     background-repeat: no-repeat;
@@ -32,15 +51,30 @@
     object-fit: contain;
 }
 
+.img-3:hover{
+    background-size: 105%;
+    background-repeat: no-repeat;
+    object-fit: contain;
+    transform: scale(1);
+    transition: all 150ms ease-in-out;
+}
+
 .container-menu-text {
     margin-top: 10vh;
-    padding-left: 2rem;
+    /* padding-left: 2rem; */
     width: 100%;
-    background-color: #000000;
-    opacity: .5;
+    background-color: rgba(0, 0, 0, .6);
+    padding: .25rem 0 0 2rem;
 }
 
 .container-menu-text span {
     font-size: 1rem;
+    font-weight: 600;
     color: #FFFFFF;
+}
+.container-menu-text mat-icon{
+    margin:0; padding: 0;
+    color: #FFFFFF;
+    border: 1px solid white;
+    border-radius: 100%;
 }
