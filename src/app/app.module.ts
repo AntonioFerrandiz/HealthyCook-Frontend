@@ -12,6 +12,7 @@ import { RecipesComponent } from './components/menu/home/recipes/recipes.compone
 import { RestaurantsComponent } from './components/menu/home/restaurants/restaurants.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ViewRecipeComponent } from './components/menu/home/recipes/view-recipe/view-recipe.component';
+import { CreateRecipeComponent } from './components/menu/home/recipes/create-recipe/create-recipe.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { ViewRecipeComponent } from './components/menu/home/recipes/view-recipe/
     UserComponent,
     RecipesComponent,
     RestaurantsComponent,
-    ViewRecipeComponent
+    ViewRecipeComponent,
+    CreateRecipeComponent
   ],
   imports: [
     BrowserModule,
