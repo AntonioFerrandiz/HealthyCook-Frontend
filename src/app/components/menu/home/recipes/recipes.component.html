@@ -1,4 +1,12 @@
 <div class="container" style="min-height: 100vh;">
+    <div class="add-recipe-container">
+        <mat-card>
+            <div class="row">
+                <div class="col my-auto"><span><b>{{ numberOfRecipes }}</b> recetas disponibles</span></div>
+                <div class="col-auto"><button mat-raised-button routerLink="create-recipe">Agrega tú receta</button></div>
+            </div>
+        </mat-card>
+    </div>
     <div class="recipes-container">
         <div class="popular-recipes-container">
             <h2>Las más populares:</h2>
@@ -6,11 +14,12 @@
         </div>
         <div class="today-recipes-container">
             <h2>Recetas de hoy:</h2>
+            <p>No hay recetas del día de hoy.</p>
         </div>
         <div class="verfied-recipes-container">
             <h2>Verificadas por el chef:</h2>
             <div class="row">
-                <div class="col" *ngFor="let item of recipesListPublished; let i = index;">
+                <div class="col-sm-4" *ngFor="let item of recipesListPublished; let i = index;">
                     <mat-card class="recipe-card">
                         <mat-card-subtitle>{{ recipesListPublished[i]['user'].username }}</mat-card-subtitle>
                         <mat-card-title>{{ recipesListPublished[i].name }}</mat-card-title>

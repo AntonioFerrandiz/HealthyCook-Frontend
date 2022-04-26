@@ -8,16 +8,23 @@ import { RecipeService } from 'src/app/services/recipe.service';
 })
 export class RecipesComponent implements OnInit {
   recipesListPublished: any[] = []
-  userID!: number
+  userID: number
+  numberOfRecipes: number
   constructor(private recipeService: RecipeService) { }
 
   ngOnInit(): void {
     this.getListRecipesVerified()
+    this.getNumberOfRecipes()
   }
   getListRecipesVerified():void{
     this.recipeService.getListRecipes().subscribe(data => {
       this.recipesListPublished = data;
       console.log(this.recipesListPublished);
+    })
+  }
+  getNumberOfRecipes():void{
+    this.recipeService.GetNumberOfRecipes().subscribe(data => {
+      this.numberOfRecipes = data
     })
   }
 }

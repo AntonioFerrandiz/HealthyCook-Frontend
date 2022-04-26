@@ -2,13 +2,29 @@
 
 /* font-family: 'Oxygen', sans-serif; */
 /* 300 400 700 */
+.add-recipe-container{
+    margin: 2rem 0;
+    
+}
+.add-recipe-container span{
+    font-family: 'Oxygen', sans-serif;
+    font-size: 1.25rem;
+
+}
+.add-recipe-container button{
+    font-family: 'Oxygen', sans-serif;
+    font-weight: 700;
+    padding: .35rem 1rem;
+    background-color: #29DC56;
+    color: #FFF;
+}
 .recipes-container h2{
     font-family: 'Oxygen', sans-serif;
     font-size: 1.5rem;
     font-weight: 500;
 }
 .recipe-card{
-    height: 12.5rem;
+    height: auto;
 }
 .btn-recipe-card{
     background-color: #E74E00;
