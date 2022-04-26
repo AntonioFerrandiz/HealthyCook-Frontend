@@ -1,0 +1,21 @@
+.recipe-input{
+    width: 100%;
+}
+.mr-0{
+    margin-right: 0;
+}
+.ml-auto{
+    margin-left: auto;
+}
+.d-block{
+    display: block;
+}
+
+.recipe-details-input{
+    width: 100%;
+}
+.btn-finished{
+    margin-top: .25rem;
+    background-color: #E74E00;
+    color: #FFF;
+}
