@@ -27,7 +27,9 @@ export class RecipeService {
   ChangePublicationStatus(recipeID:number):Observable<any>{
     return this.http.put(this.myAppUrl + this.myApiUrl + 'ChangePublicationStatus/' + recipeID,true)
   }
-
+  GetNumberOfRecipes(): Observable<any>{
+    return this.http.get(this.myAppUrl + this.myApiUrl + 'GetNumberOfRecipes')
+  }
   getListRecipes(): Observable<any> {
     return this.http.get(this.myAppUrl + this.myApiUrl + 'GetListRecipes');
   }
