@@ -2,9 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 
+export interface Ingredient {
+  name: string;
+}
+
 export interface Recipe {
   name: string;
-  
   calories: number;
 }
 const RECIPES: Recipe[] = [
@@ -21,6 +24,8 @@ const RECIPES: Recipe[] = [
 })
 export class HomeComponent implements OnInit {
   data = RECIPES
+  ingredient: string = ''
+  ingredients: any[] = []
   constructor(private toastr: ToastrService,
     private router: Router) {
   }
@@ -38,5 +43,16 @@ export class HomeComponent implements OnInit {
 
   redirectToRestaurants(): void {
     this.router.navigate(['/restaurants'])
+  }
+
+  addIngredient():void{
+    this.ingredients.push(this.ingredient)
+    console.log(this.ingredients)
+  }
+  removeIngredient(ingredient: Ingredient):void{
+   const i = this.ingredients.indexOf(ingredient) 
+   if (i >= 0){
+     this.ingredients.splice(i, 1)
+   }
   }
 }

@@ -52,9 +52,9 @@
                     <mat-icon>fastfood</mat-icon>
                 </span>
             </div>
-            <input type="text" class="form-control">
+            <input type="text" class="form-control" [(ngModel)]="ingredient">
             <div class="input-group-append">
-                <button class="input-group-text btn-add-ingredient">
+                <button class="input-group-text btn-add-ingredient" (click)="addIngredient(); ingredient=''">
                     <mat-icon>add</mat-icon>
                 </button>
             </div>
@@ -62,6 +62,16 @@
                 <div class="btn-background"><button class="input-group-text btn-recipe-search">Buscar recetas</button>
                 </div>
             </div>
+        </div>
+        <div class="ingredients-chips">
+            <mat-chip-list>
+                <mat-chip *ngFor="let ingredient of ingredients" (removed)="removeIngredient(ingredient)">
+                    {{ ingredient }}
+                    <button matChipRemove>
+                        <mat-icon [ngStyle]="{'color': '#E74E00'}">backspace</mat-icon>
+                      </button>
+                </mat-chip>
+            </mat-chip-list>
         </div>
     </div>
 

@@ -123,6 +123,11 @@
     padding: 1rem .5rem;
 }
 
+.ingredients-chips{
+    padding: 0 12.5rem;
+    text-align: center;
+}
+
 .form-control {
     background-color: #EEE;
     border: none;
