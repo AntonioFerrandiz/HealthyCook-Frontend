@@ -13,6 +13,7 @@ import { RestaurantsComponent } from './components/menu/home/restaurants/restaur
 import { HttpClientModule } from '@angular/common/http';
 import { ViewRecipeComponent } from './components/menu/home/recipes/view-recipe/view-recipe.component';
 import { CreateRecipeComponent } from './components/menu/home/recipes/create-recipe/create-recipe.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,7 @@ import { CreateRecipeComponent } from './components/menu/home/recipes/create-rec
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    SharedModule, HttpClientModule
+    SharedModule, HttpClientModule, NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]
