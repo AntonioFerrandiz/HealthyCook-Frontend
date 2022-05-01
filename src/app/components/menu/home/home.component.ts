@@ -1,37 +1,27 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { RecipeService } from 'src/app/services/recipe.service';
 
 export interface Ingredient {
   name: string;
 }
 
-export interface Recipe {
-  name: string;
-  calories: number;
-}
-const RECIPES: Recipe[] = [
-  { name: 'Receta 001', calories: 100 },
-  { name: 'Receta 002', calories: 350 },
-  { name: 'Receta 003', calories: 220 },
-  { name: 'Receta 004', calories: 180 },
-  { name: 'Receta 005', calories: 150 },
-]
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  data = RECIPES
+  recipeList: any[] = []
   ingredient: string = ''
   ingredients: any[] = []
   constructor(private toastr: ToastrService,
-    private router: Router) {
+    private router: Router, private recipeService: RecipeService) {
   }
 
   ngOnInit(): void {
-    console.log(this.data)
+    this.getLastFiveRecipes()
   }
   redirectToDespensa(): void {
     this.toastr.info('Esta ventana se encuentra en construcción, vuelve luego!', 'Holaa!')
@@ -54,5 +44,11 @@ export class HomeComponent implements OnInit {
    if (i >= 0){
      this.ingredients.splice(i, 1)
    }
+  }
+
+  getLastFiveRecipes():void{
+    this.recipeService.GetLastFiveRecipes().subscribe(data => {
+      this.recipeList = data;
+    })
   }
 }

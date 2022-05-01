@@ -77,24 +77,24 @@
 
     <div class="recipes-container-general">
         <div class="row">
-            <div class="col" *ngFor="let item of data; let i = index">
-                <div class="recipes-card">
+            <div class="col" *ngFor="let item of recipeList; let i = index">
+                <div class="recipes-card" style="cursor: pointer;"
+                routerLink="../recipes/view-recipe/{{ recipeList[i].id }}" >
                     <span>
                         <img src="../../../../assets/img/home-recipe-1.png" class="recipe-photo ">
                     </span>
                     <div class="bottom-container">
                         <div class="recipes-card-content">
                             <div class="recipes-card-header">
-                                <h3>{{ data[i].name }}</h3>
-                                <p>Esta es una receta</p>
-                                <span>{{ data[i].calories }} calorias</span>
+                                <h3>{{ recipeList[i].name }}</h3>
+                                <p>{{ recipeList[i].description }}</p>
+                                
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
-
     </div>
+    
 </div>
