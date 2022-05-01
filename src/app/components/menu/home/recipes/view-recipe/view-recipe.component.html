@@ -2,9 +2,26 @@
     <div class="row">
         <div class="col">
             <div class="recipe-container">
-                <span>{{ recipe['user'].username }}</span>
+                <span>{{ recipe['user']?.username }}</span>
                 <h2>{{ recipe['name'] }}</h2>
                 <div class="recipe-container-border"></div>
+                <div class="recipe-stats">
+                    <div class="row">
+                        <div class="col">
+                            <ngb-rating [max]="5" [(rate)]="starRating" [readonly]="false"
+                            (hover)="hovered=$event" (leave)="hovered=0"
+                            [formControl]="ratingRecipeForm"
+                            (click)="saveRating()"></ngb-rating>
+                            <span>Promedio</span>
+                        </div>
+                        
+
+                        
+                        <div class="col">
+                            save
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="recipe-description-container">
                 <p> {{ recipe['description'] }}</p>
@@ -37,7 +54,7 @@
                     <mat-tab label="Ingredientes">
                         <p class="mat-tab-contain">Aun en proceso de construcción xd</p>
                     </mat-tab>
-                  </mat-tab-group>
+                </mat-tab-group>
             </div>
         </div>
         <div class="col">
