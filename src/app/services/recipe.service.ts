@@ -30,6 +30,9 @@ export class RecipeService {
   GetNumberOfRecipes(): Observable<any>{
     return this.http.get(this.myAppUrl + this.myApiUrl + 'GetNumberOfRecipes')
   }
+  GetLastFiveRecipes(): Observable<any>{
+    return this.http.get(this.myAppUrl + this.myApiUrl + 'GetLastFiveRecipes')
+  }
   getListRecipes(): Observable<any> {
     return this.http.get(this.myAppUrl + this.myApiUrl + 'GetListRecipes');
   }
