@@ -7,18 +7,23 @@
                 <div class="recipe-container-border"></div>
                 <div class="recipe-stats">
                     <div class="row">
-                        <div class="col">
+                        <div class="col-auto" style="margin-top: auto; margin-bottom: auto;">
                             <ngb-rating [max]="5" [(rate)]="starRating" [readonly]="false"
                             (hover)="hovered=$event" (leave)="hovered=0"
                             [formControl]="ratingRecipeForm"
                             (click)="saveRating()"></ngb-rating>
-                            <span>Promedio</span>
+                            <span style="font-size: 1rem;">{{ avg }}</span>
                         </div>
                         
 
                         
-                        <div class="col">
-                            save
+                        <div class="col-auto">
+                            <button mat-icon-button class="btn-bb">
+                                <mat-icon #tooltip="matTooltip"
+                                matTooltip="Guardar Receta"
+                                [matTooltipPosition]="position.value"
+                                (click)="saveRecipe()">bookmark_border</mat-icon>
+                            </button>
                         </div>
                     </div>
                 </div>

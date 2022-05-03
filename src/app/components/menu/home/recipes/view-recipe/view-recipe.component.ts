@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
+import { TooltipPosition } from '@angular/material/tooltip';
 import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { RecipeRating } from 'src/app/models/recipe-rating';
@@ -13,9 +14,11 @@ import { RecipeService } from 'src/app/services/recipe.service';
   styleUrls: ['./view-recipe.component.css']
 })
 export class ViewRecipeComponent implements OnInit {
+  positionOptions: TooltipPosition[] = ['below', 'above', 'left', 'right'];
+  position = new FormControl(this.positionOptions[1]);
   starRating = 0; 
   hovered = 0;
-
+  avg:number
   recipeID:number;
   recipe: any[] = []
   recipeDetails: any[] = []
@@ -33,8 +36,9 @@ export class ViewRecipeComponent implements OnInit {
   ngOnInit(): void {
     this.getRecipe()
     this.getRecipeDetails()
-    
-  }
+    this.getRecipeRatingList()  
+    this.getAverageRatingOfRecipe()
+      }
   saveRating():void{
     if(this.ratingRecipeForm.value == null){
     } else {
@@ -44,6 +48,7 @@ export class ViewRecipeComponent implements OnInit {
       }
       this.recipeRatingService.saveRecipeRating(recipeRating).subscribe(data =>{
         this.toastr.success('Gracias por calificar','')
+        this.getAverageRatingOfRecipe();
       }, error =>{
         console.log(error)
       })
@@ -56,10 +61,29 @@ export class ViewRecipeComponent implements OnInit {
       // console.log(this.recipe)
     })
   }
+
   getRecipeDetails(): void{
     this.recipeDetailsService.GetRecipeDetails(this.recipeID).subscribe(data => {
       this.recipeDetails = data;
       // console.log(this.recipeDetails)
     })
+  }
+
+  getRecipeRatingList():void{
+    this.recipeRatingService.GetRatingByRecipe(this.recipeID).subscribe(data => {
+      // console.log(data)
+    })
+  }
+
+  getAverageRatingOfRecipe():void{
+    this.recipeRatingService.GetAverageRatingOfRecipe(this.recipeID).subscribe(data => {
+      this.avg = data;
+      this.starRating = data;
+      // console.log(this.starRating)
+    })
+  }
+
+  saveRecipe():void{
+    this.toastr.info('PROXIMAMENTEEEEEEE 🤑','')
   }
 }
