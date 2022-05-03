@@ -19,4 +19,10 @@ export class RecipeRatingService {
   saveRecipeRating(recipeRating: RecipeRating): Observable<any>{
     return this.http.post(this.myAppUrl + this.myApiUrl,recipeRating)
   }
+  GetRatingByRecipe(recipeID: number): Observable<any>{
+    return this.http.get(this.myAppUrl + this.myApiUrl + 'GetRatingByRecipe/' + recipeID)
+  }
+  GetAverageRatingOfRecipe(recipeID: number): Observable<any>{
+    return this.http.get(this.myAppUrl + this.myApiUrl + 'GetAverageRatingOfRecipe/' + recipeID)
+  }
 }
