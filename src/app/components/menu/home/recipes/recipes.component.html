@@ -18,19 +18,23 @@
         </div>
         <div class="verfied-recipes-container">
             <h2>Verificadas por el chef:</h2>
-            <div class="row">
+            <div class="row" *ngIf="recipesListPublished.length > 0">
                 <div class="col-sm-4" *ngFor="let item of recipesListPublished; let i = index;">
                     <mat-card class="recipe-card">
                         <mat-card-subtitle>{{ recipesListPublished[i]['user'].username }}</mat-card-subtitle>
                         <mat-card-title>{{ recipesListPublished[i].name }}</mat-card-title>
                         <mat-card-content>
                             <p>{{ recipesListPublished[i].description }}</p>
+                            <!-- {{ recipesDetails[i]?.calories }} -->
                         </mat-card-content>
                         <mat-card-actions>
                             <button mat-button class="btn-recipe-card" routerLink="view-recipe/{{ recipesListPublished[i].id }}">Ver receta</button>
                         </mat-card-actions>
                     </mat-card>
                 </div>
+            </div>
+            <div *ngIf="recipesListPublished.length < 1">
+                <span>No hay recetas por ahora, te animas a crear una?</span>
             </div>
         </div>
     </div>
