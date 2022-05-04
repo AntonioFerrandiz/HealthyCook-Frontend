@@ -7,7 +7,7 @@
                         <mat-label>Nombre de la receta</mat-label>
                         <input matInput #input formControlName="name">
                         <mat-error *ngIf="dataRecipe.get('name').hasError('required') && 
-                                    dataRecipe.get('name').touched">Campo obligatorio</mat-error>
+                                    dataRecipe.get('name').touched">Se debe de agregar el nombre de la receta</mat-error>
                     </mat-form-field>
                 </div>
                 <div>
@@ -15,7 +15,7 @@
                         <mat-label>Descripción de la receta</mat-label>
                         <textarea matInput #input rows="10" formControlName="description"></textarea>
                         <mat-error *ngIf="dataRecipe.get('description').hasError('required') && 
-                                    dataRecipe.get('description').touched">Campo obligatorio</mat-error>
+                                    dataRecipe.get('description').touched">Se debe de agregar la descripción de la receta</mat-error>
                     </mat-form-field>
                 </div>
                 <div>
@@ -23,7 +23,7 @@
                         <mat-label>Preparación de la receta</mat-label>
                         <textarea matInput #input rows="10" formControlName="preparation"></textarea>
                         <mat-error *ngIf="dataRecipe.get('preparation').hasError('required') && 
-                                    dataRecipe.get('preparation').touched">Campo obligatorio</mat-error>
+                                    dataRecipe.get('preparation').touched">Se debe de agregar la preparación de las recetas</mat-error>
                     </mat-form-field>
                 </div>
                 <button mat-fab 
