@@ -35,20 +35,28 @@ export class HomeComponent implements OnInit {
     this.router.navigate(['/restaurants'])
   }
 
-  addIngredient():void{
-    this.ingredients.push(this.ingredient)
+  addIngredient(): void {
+    if (this.ingredient === null || this.ingredient.match(/^ *$/) !== null) {
+    } else {
+      this.ingredients.push(this.ingredient)
+    }
     console.log(this.ingredients)
   }
-  removeIngredient(ingredient: Ingredient):void{
-   const i = this.ingredients.indexOf(ingredient) 
-   if (i >= 0){
-     this.ingredients.splice(i, 1)
-   }
+  removeIngredient(ingredient: Ingredient): void {
+    const i = this.ingredients.indexOf(ingredient)
+    if (i >= 0) {
+      this.ingredients.splice(i, 1)
+    }
   }
-
-  getLastFiveRecipes():void{
+  searchRecipe():void{
+    if(this.ingredients.length === 0){
+      this.toastr.warning('Debe ingresar al menos un ingrediente para realizar la busqueda', '')
+    }
+  }
+  getLastFiveRecipes(): void {
     this.recipeService.GetLastFiveRecipes().subscribe(data => {
       this.recipeList = data;
+      console.log(data)
     })
   }
 }
