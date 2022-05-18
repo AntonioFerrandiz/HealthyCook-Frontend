@@ -13,6 +13,7 @@ export class RecipesComponent implements OnInit {
   numberOfRecipes: number
   recipesID: any[] = []
   recipesDetails: any[] = []
+  todaysRecipes: any[] = []
   constructor(private recipeService: RecipeService,
      private recipeDetailsService: RecipeDetailsService) { }
 
@@ -20,9 +21,16 @@ export class RecipesComponent implements OnInit {
     this.numberOfRecipes = 0
     this.getListRecipesVerified()
     this.getNumberOfRecipes()
+    this.GetTodaysRecipes()
+    
+  }
+  GetTodaysRecipes():void {
     const now = new Date()
     console.log(this.formatDate(now))
-    
+    this.recipeService.GetTodaysRecipes(this.formatDate(now)).subscribe(data => {
+      this.todaysRecipes = data
+      console.log(this.todaysRecipes)
+    })
   }
   getListRecipesVerified():void{
     this.recipeService.getListRecipes().subscribe(data => {

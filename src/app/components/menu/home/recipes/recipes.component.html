@@ -14,11 +14,29 @@
         </div>
         <div class="today-recipes-container">
             <h2>Recetas de hoy:</h2>
-            <p>No hay recetas del día de hoy.</p>
+            
+            <div class="row" *ngIf="todaysRecipes.length > 0; else notShowTodaysRecipes">
+                <div class="col-sm-4" *ngFor="let item of todaysRecipes; let i = index;">
+                    <mat-card class="recipe-card">
+                        <!-- <mat-card-subtitle>{{ todaysRecipes[i]['user'].username }}</mat-card-subtitle> -->
+                        <mat-card-title>{{ todaysRecipes[i].name }}</mat-card-title>
+                        <mat-card-content>
+                            <p>{{ todaysRecipes[i].description }}</p>
+                        </mat-card-content>
+                        <mat-card-actions>
+                            <button mat-button class="btn-recipe-card" routerLink="view-recipe/{{ todaysRecipes[i].id }}">Ver receta</button>
+                        </mat-card-actions>
+                    </mat-card>
+                </div>
+            </div>
+            <ng-template #notShowTodaysRecipes>
+                <p >No hay recetas del día de hoy.</p>
+            </ng-template>
+            
         </div>
         <div class="verfied-recipes-container">
             <h2>Verificadas por el chef:</h2>
-            <div class="row" *ngIf="recipesListPublished.length > 0">
+            <div class="row" *ngIf="recipesListPublished.length > 0; else notShowRecipes">
                 <div class="col-sm-4" *ngFor="let item of recipesListPublished; let i = index;">
                     <mat-card class="recipe-card">
                         <mat-card-subtitle>{{ recipesListPublished[i]['user'].username }}</mat-card-subtitle>
@@ -33,9 +51,10 @@
                     </mat-card>
                 </div>
             </div>
-            <div *ngIf="recipesListPublished.length < 1">
+            <ng-template #notShowRecipes>
                 <span>No hay recetas por ahora, te animas a crear una?</span>
-            </div>
+            </ng-template>
+            
         </div>
     </div>
 </div>
