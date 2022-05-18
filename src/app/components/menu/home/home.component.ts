@@ -16,6 +16,7 @@ export class HomeComponent implements OnInit {
   recipeList: any[] = []
   ingredient: string = ''
   ingredients: any[] = []
+  errorMessage: string;
   constructor(private toastr: ToastrService,
     private router: Router, private recipeService: RecipeService) {
   }
@@ -48,15 +49,19 @@ export class HomeComponent implements OnInit {
       this.ingredients.splice(i, 1)
     }
   }
-  searchRecipe():void{
-    if(this.ingredients.length === 0){
+  searchRecipe(): void {
+    if (this.ingredients.length === 0) {
       this.toastr.warning('Debe ingresar al menos un ingrediente para realizar la busqueda', '')
     }
   }
   getLastFiveRecipes(): void {
-    this.recipeService.GetLastFiveRecipes().subscribe(data => {
-      this.recipeList = data;
-      console.log(data)
+    this.recipeService.GetNumberOfRecipes().subscribe(data => {      
+      if (data >= 5) {
+        this.recipeService.GetLastFiveRecipes().subscribe(data => {
+          this.recipeList = data;
+        })
+      }
+      this.errorMessage = "Tenemos pocas recetas para mostrar aquí, te animas a crear más?"
     })
   }
 }

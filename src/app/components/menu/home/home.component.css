@@ -229,3 +229,13 @@
     color: #FFFFFF;
     background-color: #E74E00;
 }
+.error-message{
+    text-align: center;
+    font-size: 1.25rem;
+    color: #121212;
+}
+.btn-create {
+    margin-top: .5rem;
+    background-color: #E74E00;
+    color: #FFF;
+}
