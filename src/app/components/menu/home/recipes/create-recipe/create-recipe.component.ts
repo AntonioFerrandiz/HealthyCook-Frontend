@@ -30,7 +30,8 @@ export class CreateRecipeComponent implements OnInit {
     this.dataRecipe = this.fb.group({
       name: ['', [Validators.required]],
       description: ['', [Validators.required]],
-      preparation: ['', [Validators.required]]
+      preparation: ['', [Validators.required]],
+      dateCreated: ['']
     })
     this.recipeDetails = this.fb.group({
       preparationTime: ['', [Validators.required]],
@@ -45,12 +46,28 @@ export class CreateRecipeComponent implements OnInit {
 
   ngOnInit(): void { }
 
+  padTo2Digits(num: number) {
+    return num.toString().padStart(2, '0');
+  }
+  
+  formatDate(date: Date) {
+    return (
+      [
+        this.padTo2Digits(date.getDate()),
+        this.padTo2Digits(date.getMonth() + 1),
+        date.getFullYear(),
+      ].join('-')
+    );
+  }
 
   registerRecipe() {
+    const now = new Date();
+    
     const recipe: Recipe = {
       name: this.dataRecipe.value.name,
       description: this.dataRecipe.value.description,
-      preparation: this.dataRecipe.value.preparation
+      preparation: this.dataRecipe.value.preparation,
+      dateCreated: this.formatDate(now)
     }
     console.log(recipe)
     this.recipeService.saveRecipe(recipe).subscribe(data => {
