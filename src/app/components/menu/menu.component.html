@@ -7,12 +7,20 @@
         <span class="spacer"></span>
         <span flex></span>
         <div>
-            <button mat-icon-button>
+            <button mat-icon-button [matMenuTriggerFor]="menu">
                 <mat-icon>bookmark_border</mat-icon>
             </button>
-            <button mat-icon-button>
-                <mat-icon>favorite_border</mat-icon>
+            <mat-menu #menu="matMenu">
+                <button mat-menu-item disabled class="btn-menu-disabled">Recetas guardadas</button>
+                <button mat-menu-item *ngFor="let recipe of recipesSaved; let i = index"
+                routerLink="../recipes/view-recipe/{{ recipesSaved[i].recipeSavedID }}">
+                    <h4 style="margin:auto;">🍴 {{ recipesName[i] }} 🍴</h4>
+                </button>
+            </mat-menu>
+            <button mat-icon-button >
+                <mat-icon >favorite_border</mat-icon>
             </button>
+            
             <button mat-icon-button>
                 <mat-icon style="font-size: 2.5rem; margin-right: 40%;" [ngStyle]="{'color': '#25C54D'}">account_circle</mat-icon>
             </button>
