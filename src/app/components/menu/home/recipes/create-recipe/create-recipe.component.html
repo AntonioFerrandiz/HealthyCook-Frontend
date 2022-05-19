@@ -40,7 +40,7 @@
                     <div class="col">
                         <mat-form-field appearance="fill" class="recipe-details-input">
                             <mat-label>Tiempo de preparación</mat-label>
-                            <input matInput #input formControlName="preparationTime">
+                            <input matInput #input formControlName="preparationTime" type="number">
                             <mat-error *ngIf="recipeDetails.get('preparationTime').hasError('required') && 
                                 recipeDetails.get('preparationTime').touched">Campo obligatorio</mat-error>
                         </mat-form-field>
@@ -100,8 +100,5 @@
                 <button mat-raised-button class="mr-0 ml-auto d-block btn-finished" type="submit">Finalizar</button>
             </form>
         </mat-card-content>
-        <mat-card-actions>
-
-        </mat-card-actions>
     </mat-card>
 </div>
