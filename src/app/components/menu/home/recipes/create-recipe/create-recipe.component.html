@@ -2,6 +2,9 @@
     <mat-card>
         <mat-card-content>
             <form autocomplete="off" *ngIf="showRecipeForm" [formGroup]="dataRecipe" (ngSubmit)="registerRecipe()">
+                <div class="form-title">
+                    <h3>Registra tu receta</h3>
+                </div>
                 <div>
                     <mat-form-field appearance="fill" class="recipe-input">
                         <mat-label>Nombre de la receta</mat-label>
@@ -36,7 +39,9 @@
             </form>
             <form *ngIf="showRecipeDetailsForm" autocomplete="off" [formGroup]="recipeDetails"
                 (ngSubmit)="registerRecipeDetails()">
-
+                <div class="form-title">
+                    <h3>Detalles de la receta</h3>
+                </div>
                 <div class="row">
                     <div class="col">
                         <div class="row">
@@ -101,7 +106,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col" >
+                    <div class="col">
                         <div formGroupName="recipeIngredients">
                             <div class="row">
                                 <mat-form-field appearance="outline">
@@ -109,9 +114,8 @@
                                     <input matInput #input type="text" formControlName="ingredientNameType">
                                 </mat-form-field>
                             </div>
-                            <hr>
                             <div formArrayName="ingredientsList"
-                                  *ngFor="let item of getIngredients.controls; let i = index;">
+                                *ngFor="let item of getIngredients.controls; let i = index;">
                                 <div [formGroupName]="i">
                                     <div class="row">
                                         <mat-form-field appearance="fill">
@@ -121,16 +125,19 @@
                                     </div>
                                     <div class="row">
                                         <div class="col">
-                                            <mat-form-field appearance="fill">
+                                            <mat-form-field appearance="fill" class="recipe-details-input">
                                                 <mat-label>Cantidad</mat-label>
                                                 <input matInput #input type="number" formControlName="quantity">
                                             </mat-form-field>
                                         </div>
                                         <div class="col">
-                                            <mat-form-field appearance="fill">
+                                            <mat-form-field appearance="fill" class="recipe-details-input">
                                                 <mat-label>Unidad de medición</mat-label>
                                                 <mat-select formControlName="unity">
+                                                    <mat-option value="Unidades">Unidades</mat-option>
                                                     <mat-option value="Cucharadas">Cucharadas</mat-option>
+                                                    <mat-option value="Mililitros">Mililitros</mat-option>
+                                                    <mat-option value="Onzas">Onzas</mat-option>
                                                     <mat-option value="Gramos">Gramos</mat-option>
                                                     <mat-option value="Kilogramos">Kilogramos</mat-option>
                                                 </mat-select>
@@ -139,8 +146,12 @@
                                     </div>
                                 </div>
                             </div>
-                            <button (click)="addIngredient()" type="button">Agregar ingredient</button>
-                            <button (click)="addIngredientTypeList()" type="button">Agregar tipos ingredientes </button>
+                            <button mat-fab class="mr-0 ml-auto d-block" [ngStyle]="{'background-color': '#E74E00'}"
+                            (click)="addIngredient()" #tooltip="matTooltip" matTooltip="Agregar ingrediente" type="button">
+                                <mat-icon>add</mat-icon>
+                            </button>
+                            <button mat-raised-button class="mr-0 ml-auto d-block mt-3" [ngStyle]="{'background-color': '#E74E00', 'color': '#FFFFFF'}"
+                            (click)="addIngredientTypeList()" type="button">Agregar tipos ingredientes </button>
                         </div>
 
                         <h3>Lista Ingredientes</h3>
@@ -148,9 +159,9 @@
                         <ul *ngFor="let item of ingredientTypesNames; let i = index">
                             <li>{{ ingredientTypesNames[i] }}</li>
                         </ul>
-                        <button mat-fab class="mr-0 ml-auto d-block" [ngStyle]="{'background-color': '#E74E00'}"
-                            type="submit" [disabled]="recipeDetails.invalid">
-                            <mat-icon>east</mat-icon>
+                        <button mat-raised-button class="mr-0 ml-auto d-block" [ngStyle]="{'background-color': '#E74E00'}"
+                            type="submit" [disabled]="ingredientTypesNames.length < 1 || recipeDetails.invalid" >
+                            Publicar receta
                         </button>
                     </div>
                 </div>
