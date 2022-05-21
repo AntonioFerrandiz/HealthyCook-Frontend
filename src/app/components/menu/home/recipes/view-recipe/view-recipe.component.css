@@ -70,6 +70,16 @@
     font-family: 'Oxygen', sans-serif;
 }
 
+ul {
+    list-style: none;
+    font-family: 'Oxygen', sans-serif;
+}
+
+li::before {
+    content: "• ";
+    color: #E74E00;
+}
+
 .recipe-container-img {
     background-color: #707070;
     width: 35rem;

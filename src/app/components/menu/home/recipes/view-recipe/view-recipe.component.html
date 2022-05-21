@@ -51,13 +51,29 @@
                     </div>
                 </div>
             </div>
+            
+            
+            
             <div class="recipe-tabs-container">
                 <mat-tab-group>
                     <mat-tab label="Preparación">
                         <p class="mat-tab-contain">{{ recipe['preparation'] }}</p>
                     </mat-tab>
                     <mat-tab label="Ingredientes">
-                        <p class="mat-tab-contain">Aun en proceso de construcción xd</p>
+                        <div class="mat-tab-contain">
+                            <div *ngFor="let typeOfIngredient of recipeDetails['ingredientTypes']; let i = index">
+                                <!-- {{ typeOfIngredient.name }} -->
+                                <div *ngFor="let ingredients of recipeDetails['ingredientTypes'][i]['ingredientsList']; let j = index;">
+                                    <ul>
+                                        <li>
+                                            {{ ingredients.quantity }} {{ ingredients.unit }} de {{ ingredients.name }}
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            
+                        </div>
                     </mat-tab>
                 </mat-tab-group>
             </div>
