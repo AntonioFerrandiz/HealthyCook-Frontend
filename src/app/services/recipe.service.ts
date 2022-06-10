@@ -47,5 +47,8 @@ export class RecipeService {
   GetListRecipesNoPublishedByUser(userID:number): Observable<any>{
     return this.http.get(this.myAppUrl + this.myApiUrl + 'GetListRecipesNoPublishedByUser/' + userID)
   }
+  SearchRecipeByIngredient(ingredient: string): Observable<any>{
+    return this.http.get(this.myAppUrl + this.myApiUrl + 'SearchRecipeByIngredient/' + ingredient)
+  }
 }
 
