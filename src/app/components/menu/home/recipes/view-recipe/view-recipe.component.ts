@@ -10,6 +10,10 @@ import { RecipeRatingService } from 'src/app/services/recipe-rating.service';
 import { RecipeService } from 'src/app/services/recipe.service';
 import { RecipesSavedService } from 'src/app/services/recipes-saved.service';
 
+import pdfMake from 'pdfmake/build/pdfMake';
+import pdfFonts from 'pdfmake/build/vfs_fonts';
+pdfMake.vfs = pdfFonts.pdfMake.vfs;
+
 @Component({
   selector: 'app-view-recipe',
   templateUrl: './view-recipe.component.html',
@@ -22,6 +26,7 @@ export class ViewRecipeComponent implements OnInit {
   hovered = 0;
   avg: number
   recipeID: number;
+  recipeName: string;
   recipe: any[] = []
   recipeDetails: any[] = []
   ratingRecipeForm = new FormControl(null, Validators.required);
@@ -31,7 +36,7 @@ export class ViewRecipeComponent implements OnInit {
     private fb: FormBuilder,
     private recipeRatingService: RecipeRatingService,
     private recipesSavedService: RecipesSavedService,
-    private toastr: ToastrService) {
+    private toastr: ToastrService,) {
     this.recipeID = +this.aRoue.snapshot.paramMap.get('id');
 
   }
@@ -60,15 +65,18 @@ export class ViewRecipeComponent implements OnInit {
   }
   getRecipe(): void {
     this.recipeService.GetRecipeByID(this.recipeID).subscribe(data => {
+      this.recipeName = data['name']
+      console.log(this.recipeName)
       this.recipe = data
-      // console.log(this.recipe)
+      console.log(this.recipe)
     })
   }
 
   getRecipeDetails(): void {
     this.recipeDetailsService.GetRecipeDetails(this.recipeID).subscribe(data => {
+
       this.recipeDetails = data;
-      // console.log(this.recipeDetails)
+      console.log(this.recipeDetails)
     })
   }
 
@@ -97,5 +105,106 @@ export class ViewRecipeComponent implements OnInit {
     }, error => {
       console.log(error)
     })
+  }
+
+  createPdf() {
+    var recipeDetails = this.recipeDetails['ingredientTypes']
+    var typeIngredients = recipeDetails.map(function (x) {
+      return x
+    })
+    var ingredientsList = typeIngredients.map(function (x) {
+      return x.ingredientsList
+    })
+    const ingredientTypeLength = []
+    const ingredients = []
+    var y = ''
+    for (let i = 0; i < ingredientsList.length; i++) {
+      ingredientTypeLength.push(ingredientsList[i].length)
+      for (let k = 0; k < ingredientTypeLength[i]; k++) {
+        y = '- ' + ingredientsList[i][k].quantity + ' ' + ingredientsList[i][k].unit + ' de ' + ingredientsList[i][k].name
+        ingredients.push(y)
+
+      }
+    }
+
+    console.log('1)', typeIngredients)
+    console.log('2)', ingredientsList)
+
+    const pdfDefinition: any = {
+      content: [
+        {
+          text: this.recipe['user']['username'],
+          fontSize: 12,
+        },
+        {
+          text: this.recipe['name'],
+          fontSize: 32,
+          decoration: 'underline',
+          decorationColor: '#E74E00',
+          margin: [0, 0, 0, 12]
+        },
+        {
+          alignment: 'justify',
+          columns: [
+            {
+              text: 'Descripción:',
+              bold: true,
+              fontSize: 18,
+              margin: [0, 16, 0, 8]
+            },
+            {
+              text: 'Ingredientes:',
+              bold: true,
+              fontSize: 18,
+              margin: [0, 16, 0, 8]
+            }
+          ]
+        },
+        {
+          alignment: 'justify',
+          columns: [
+            {
+              text: this.recipe['description'],
+            },
+            {
+              text: ingredients.join('\n'),
+            }
+          ]
+        },
+        {
+          text: 'Detalles de la receta',
+          bold: true,
+          fontSize: 18,
+          margin: [0, 16, 0, 8]
+        },
+        {
+          table: {
+            body: [
+              ['Dificultad', 'Porciones', 'Tiempo de preparación', 'Calorías'],
+              [
+                this.recipeDetails['difficulty'],
+                this.recipeDetails['servings'],
+                this.recipeDetails['preparationTime'] + ' ' + this.recipeDetails['timePeriod'],
+                this.recipeDetails['calories'] + ' cal'
+              ]
+            ]
+          }
+        },
+        {
+          text: 'Preparación',
+          bold: true,
+          fontSize: 18,
+          margin: [0, 16, 0, 8]
+        },
+        {
+          text: this.recipe['preparation']
+        }
+      ],
+      defaultStyle: {
+        columnGap: 20
+      }
+    }
+    const pdf = pdfMake.createPdf(pdfDefinition);
+    pdf.open()
   }
 }

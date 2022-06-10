@@ -25,6 +25,15 @@
                                 (click)="saveRecipe()">bookmark_border</mat-icon>
                             </button>
                         </div>
+
+                        <div class="col-auto">
+                            <button mat-icon-button class="btn-bb">
+                                <mat-icon #tooltip="matTooltip"
+                                matTooltip="Descargar Receta"
+                                [matTooltipPosition]="position.value"
+                                (click)="createPdf()">download</mat-icon>
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
