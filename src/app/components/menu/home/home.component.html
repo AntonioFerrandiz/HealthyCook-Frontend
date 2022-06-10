@@ -1,4 +1,3 @@
-
 <div class="container">
     <div class="container-menu-general">
         <div class="row">
@@ -46,40 +45,47 @@
             <h2>¿No sabes qué cocinar?</h2>
             <p>Ingresa los ingredientes que tienes en tu despensa</p>
         </div>
-        <div class="input-group mb-3">
-            <div class="input-group-prepend">
-                <span class="input-group-text">
-                    <mat-icon>fastfood</mat-icon>
-                </span>
-            </div>
-            <input type="text" class="form-control" [(ngModel)]="ingredient">
-            <div class="input-group-append">
-                <button class="input-group-text btn-add-ingredient" (click)="addIngredient(); ingredient=''">
-                    <mat-icon>add</mat-icon>
-                </button>
-            </div>
-            <div class="input-group-append">
-                <div class="btn-background"><button class="input-group-text btn-recipe-search" (click)="searchRecipe()">Buscar recetas</button>
+        <form autocomplete="off" [formGroup]="searchForm" (ngSubmit)="searchRecipeByIngredient()">
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">
+                        <mat-icon>fastfood</mat-icon>
+                    </span>
                 </div>
+
+                <input type="text" class="form-control" [(ngModel)]="ingredient" [ngModelOptions]="{standalone: true}">
+                <div class="input-group-append">
+                    <button class="input-group-text btn-add-ingredient" type="button" (click)="addIngredient(); ingredient=''">
+                        <mat-icon>add</mat-icon>
+                    </button>
+                </div>
+                <div class="input-group-append">
+                    <div class="btn-background"><button class="input-group-text btn-recipe-search"
+                            type="submit">Buscar recetas</button>
+                    </div>
+                </div>
+
             </div>
-        </div>
+        </form>
         <div class="ingredients-chips">
             <mat-chip-list>
                 <mat-chip *ngFor="let ingredient of ingredients" (removed)="removeIngredient(ingredient)">
                     {{ ingredient }}
                     <button matChipRemove>
                         <mat-icon [ngStyle]="{'color': '#E74E00'}">backspace</mat-icon>
-                      </button>
+                    </button>
                 </mat-chip>
             </mat-chip-list>
         </div>
     </div>
 
     <div class="recipes-container-general">
+        <h3 class="five-recipes-title">Las últimas recetas publicadas </h3>
+        <hr>
         <div class="row">
             <div class="col" *ngFor="let item of recipeList; let i = index">
                 <div class="recipes-card" style="cursor: pointer;"
-                routerLink="../recipes/view-recipe/{{ recipeList[i].id }}" >
+                    routerLink="../recipes/view-recipe/{{ recipeList[i].id }}">
                     <span>
                         <img src="../../../../assets/img/home-recipe-1.png" class="recipe-photo ">
                     </span>
@@ -88,19 +94,20 @@
                             <div class="recipes-card-header">
                                 <h3>{{ recipeList[i].name }}</h3>
                                 <p>{{ recipeList[i].description }}</p>
-                                
+
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="row">
+        <div class="row" *ngIf="recipeList.length < 5">
             <div class="col text-center">
                 <span class="error-message">{{ errorMessage }}</span>
-                <div><button mat-raised-button routerLink="../recipes/create-recipe" class="btn-create">Agrega tú receta</button></div>
+                <div><button mat-raised-button routerLink="../recipes/create-recipe" class="btn-create">Agrega tú
+                        receta</button></div>
             </div>
         </div>
     </div>
-    
+
 </div>

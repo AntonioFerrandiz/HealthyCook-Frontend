@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { RecipeService } from 'src/app/services/recipe.service';
@@ -16,9 +17,16 @@ export class HomeComponent implements OnInit {
   recipeList: any[] = []
   ingredient: string = ''
   ingredients: any[] = []
+  recipesFound: any[] = []
   errorMessage: string;
+  searchForm: FormGroup;
   constructor(private toastr: ToastrService,
-    private router: Router, private recipeService: RecipeService) {
+    private router: Router,
+    private recipeService: RecipeService,
+    private fb: FormBuilder) {
+      this.searchForm = this.fb.group({
+        ingredients: ['']
+      })
   }
 
   ngOnInit(): void {
@@ -39,9 +47,8 @@ export class HomeComponent implements OnInit {
   addIngredient(): void {
     if (this.ingredient === null || this.ingredient.match(/^ *$/) !== null) {
     } else {
-      this.ingredients.push(this.ingredient)
+      this.ingredients.push(this.ingredient.trim())
     }
-    console.log(this.ingredients)
   }
   removeIngredient(ingredient: Ingredient): void {
     const i = this.ingredients.indexOf(ingredient)
@@ -63,5 +70,28 @@ export class HomeComponent implements OnInit {
       }
       this.errorMessage = "Tenemos pocas recetas para mostrar aquí, te animas a crear más?"
     })
+  }
+  searchRecipeByIngredient():void {
+    if (this.ingredients.length === 0) {
+      this.toastr.warning('Debe ingresar al menos un ingrediente para realizar la busqueda', '')
+    } else {
+      // console.log(this.ingredients)
+      var arr = this.ingredients
+      var iterador = arr.values()
+      for (let ingredient of iterador){
+        this.recipeService.SearchRecipeByIngredient(ingredient).subscribe(data => {
+          
+          if(data.length == 0){
+            this.toastr.error("No se han encontrado ingredientes que contengan " + ingredient)
+          } else {
+            this.recipesFound.push(data)
+            console.log(this.recipesFound)
+          }
+        })
+       
+      }
+      
+    }
+    
   }
 }
