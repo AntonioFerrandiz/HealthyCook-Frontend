@@ -14,6 +14,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ViewRecipeComponent } from './components/menu/home/recipes/view-recipe/view-recipe.component';
 import { CreateRecipeComponent } from './components/menu/home/recipes/create-recipe/create-recipe.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ProfileComponent } from './components/user/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     RecipesComponent,
     RestaurantsComponent,
     ViewRecipeComponent,
-    CreateRecipeComponent
+    CreateRecipeComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
