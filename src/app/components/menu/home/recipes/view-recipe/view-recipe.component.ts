@@ -100,12 +100,18 @@ export class ViewRecipeComponent implements OnInit {
       recipeSavedID: this.recipeID,
     }
     console.log(recipesSaved)
-    this.recipesSavedService.saveRecipesSaved(recipesSaved).subscribe(data => {
-      this.toastr.success('Receta guardada exitosamente', '')
-      console.log(data)
-    }, error => {
-      console.log(error)
+    this.recipesSavedService.VerifyRecipeSaved(this.recipeID, 1).subscribe(data => {
+      if (data) {
+        this.toastr.error('Ya has guardado esta receta anteriormente', 'Error')
+      } else {
+        this.recipesSavedService.saveRecipesSaved(recipesSaved).subscribe(data => {
+          this.toastr.success('Receta guardada exitosamente', '')
+        }, error => {
+          console.log(error)
+        })
+      }
     })
+
   }
 
   createPdf() {

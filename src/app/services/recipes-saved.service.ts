@@ -23,5 +23,8 @@ export class RecipesSavedService {
    GetRecipesSavedByUserID(userID: Number): Observable<any>{
      return this.http.get(this.myAppUrl + this.myApiUrl + `GetRecipesSavedByUserID/${userID}`)
    }
+   VerifyRecipeSaved(recipeID: Number, userID: Number): Observable<any>{
+    return this.http.get(this.myAppUrl + this.myApiUrl + `VerifyRecipeSaved/${recipeID}/${userID}`)
+   }
 
 }
