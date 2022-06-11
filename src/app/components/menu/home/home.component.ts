@@ -3,6 +3,8 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { RecipeService } from 'src/app/services/recipe.service';
+import { ShareIngredientsService } from 'src/app/services/share-ingredients.service';
+import { ShareRecipesFoundService } from 'src/app/services/share-recipes-found.service';
 
 export interface Ingredient {
   name: string;
@@ -17,12 +19,15 @@ export class HomeComponent implements OnInit {
   recipeList: any[] = []
   ingredient: string = ''
   ingredients: any[] = []
+  ingredientsList: any[]
   recipesFound: any[] = []
   errorMessage: string;
   searchForm: FormGroup;
   constructor(private toastr: ToastrService,
     private router: Router,
     private recipeService: RecipeService,
+    private shareRecipesFoundService: ShareRecipesFoundService,
+    private shareIngredientsService: ShareIngredientsService,
     private fb: FormBuilder) {
       this.searchForm = this.fb.group({
         ingredients: ['']
@@ -75,23 +80,9 @@ export class HomeComponent implements OnInit {
     if (this.ingredients.length === 0) {
       this.toastr.warning('Debe ingresar al menos un ingrediente para realizar la busqueda', '')
     } else {
-      // console.log(this.ingredients)
-      var arr = this.ingredients
-      var iterador = arr.values()
-      for (let ingredient of iterador){
-        this.recipeService.SearchRecipeByIngredient(ingredient).subscribe(data => {
-          
-          if(data.length == 0){
-            this.toastr.error("No se han encontrado ingredientes que contengan " + ingredient)
-          } else {
-            this.recipesFound.push(data)
-            console.log(this.recipesFound)
-          }
-        })
-       
-      }
-      
+      this.shareRecipesFoundService.recipesFoundList = this.recipesFound
+      this.shareIngredientsService.ingredientsList = this.ingredients
+      this.router.navigate(['/recipes/recipes-found'])
     }
-    
   }
 }

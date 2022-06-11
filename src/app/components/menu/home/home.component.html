@@ -45,7 +45,7 @@
             <h2>¿No sabes qué cocinar?</h2>
             <p>Ingresa los ingredientes que tienes en tu despensa</p>
         </div>
-        <form autocomplete="off" [formGroup]="searchForm" (ngSubmit)="searchRecipeByIngredient()">
+        <!-- <form autocomplete="off" [formGroup]="searchForm" (ngSubmit)="searchRecipeByIngredient()"> -->
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
                     <span class="input-group-text">
@@ -61,12 +61,12 @@
                 </div>
                 <div class="input-group-append">
                     <div class="btn-background"><button class="input-group-text btn-recipe-search"
-                            type="submit">Buscar recetas</button>
+                        (click)="searchRecipeByIngredient()" >Buscar recetas</button>
                     </div>
                 </div>
 
             </div>
-        </form>
+        <!-- </form> -->
         <div class="ingredients-chips">
             <mat-chip-list>
                 <mat-chip *ngFor="let ingredient of ingredients" (removed)="removeIngredient(ingredient)">
