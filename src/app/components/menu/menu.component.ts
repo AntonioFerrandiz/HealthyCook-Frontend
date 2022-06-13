@@ -32,7 +32,6 @@ export class MenuComponent implements OnInit {
       for (let i = 0; i < this.recipesSaved.length; i++) {
         this.recipeService.GetRecipeByID(this.recipesSaved[i].recipeSavedID).subscribe(data => {
           this.recipesName.push(data?.name)
-          console.log(this.recipesName)
         })
         
       }
