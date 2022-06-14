@@ -26,5 +26,7 @@ export class RecipesSavedService {
    VerifyRecipeSaved(recipeID: Number, userID: Number): Observable<any>{
     return this.http.get(this.myAppUrl + this.myApiUrl + `VerifyRecipeSaved/${recipeID}/${userID}`)
    }
-
+   RemoveRecipeSaved(recipeSavedID: Number): Observable<any>{
+    return this.http.delete(this.myAppUrl + this.myApiUrl + recipeSavedID);
+   }
 }

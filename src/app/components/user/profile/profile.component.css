@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=Oxygen:wght@300;400;700&display=swap');
+
+.image-banner {
+    width: 100%;
+    height: 15rem;
+    background: url("src\assets\img\banner-image.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    object-fit: contain;
+    position: relative;
+}
+
+.profile-image-banner {
+    margin: 0 auto;
+    width: 10rem;
+    height: 10rem;
+    display: block;
+    background: url("src\assets\img\user-profile-image.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    object-fit: contain;
+    border-radius: 100%;
+
+}
+
+.user-information {
+    z-index: 3;
+    position: relative;
+    margin: 0 auto;
+    top: -5rem;
+    padding-bottom: 0;
+    font-family: 'Oxygen', sans-serif;
+}
+
+.user-information h3 {
+    margin: 1.5rem 0 .25rem 0;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #121212;
+}
+
+.user-information p {
+    font-weight: 300;
+    font-size: 1.5rem;
+}
+
+::ng-deep.mat-tab-label .mat-tab-label-content {
+    flex-wrap: wrap !important;
+}
+
+::ng-deep.mat-tab-label .mat-tab-label-content span {
+    display: flex !important;
+    flex: 1 0 100% !important;
+    justify-content: center !important;
+}
+.item-count{
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+.item-name{
+    font-size: 0.85rem;
+}
+.mat-tab-container{
+    margin-top: 2rem;
+    font-family: 'Oxygen', sans-serif;   
+}
+.mat-tab-container h3{
+    font-weight: 500;
+    font-size: 1.5rem;
+}
+.recipe-card{
+    font-family: 'Oxygen', sans-serif;   
+    width: 20rem;
+}
+.btn-recipe-card{
+    background-color: #E74E00;
+    color: #FFF;
+    border-radius: 5rem;
+}
+mat-card mat-title{
+    font-weight: 700;
+}
+.mat-icon-color{
+    color: #E74E00
+}

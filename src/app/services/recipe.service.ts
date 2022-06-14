@@ -50,5 +50,8 @@ export class RecipeService {
   SearchRecipeByIngredient(ingredient: string): Observable<any>{
     return this.http.get(this.myAppUrl + this.myApiUrl + 'SearchRecipeByIngredient/' + ingredient)
   }
+  deleteRecipe(recipeID:number):Observable<any>{
+    return this.http.delete(this.myAppUrl + this.myApiUrl + recipeID);
+  }
 }
 

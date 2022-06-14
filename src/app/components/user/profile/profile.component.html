@@ -1,3 +1,122 @@
 <div style="min-height: 100vh;" class="container">
-    a
+    <div class="user-profile-card">
+        <div class="image-banner"></div>
+
+        <div class="user-information text-center">
+            <div class="profile-image-banner"></div>
+            <h3> {{ userData['firstname'] }} {{ userData['lastname'] }}</h3>
+            <p> {{ userData['username'] }}</p>
+            <span>Miembro desde {{ formatedDate }}</span>
+        </div>
+        <mat-tab-group>
+            <mat-tab>
+                <ng-template mat-tab-label>
+                    <span class="item-count">{{ publishedRecipesCount }}</span><br>
+                    <span class="item-name">Recetas publicadas</span>
+                </ng-template>
+                <div class="container mat-tab-container">
+                    <h3>Recetas publicadas</h3>
+                    <div class="row">
+                        <div class="col-auto" *ngFor="let recipe of publishedRecipesList">
+                            <mat-card class="recipe-card">
+                                <mat-card-title>
+                                    <div class="row">
+                                        <div class="col">
+                                            {{ recipe['name'] }}
+                                        </div>
+                                        <div class="col-auto">
+                                            <button mat-icon-button [matMenuTriggerFor]="menu">
+                                                <mat-icon class="mat-icon-color">more_vert</mat-icon>
+                                            </button>
+                                            <mat-menu #menu="matMenu">
+                                                <button mat-menu-item (click)="deleteRecipe(recipe['id'])">
+                                                    <mat-icon>delete</mat-icon>
+                                                    Eliminar
+                                                </button>
+                                                <button mat-menu-item disabled>
+                                                    <mat-icon>edit</mat-icon>
+                                                    Actualizar
+                                                </button>
+                                            </mat-menu>
+                                        </div>
+                                    </div>
+                                </mat-card-title>
+                                <mat-card-subtitle>
+                                    {{ recipe['dateCreated'] }}
+                                </mat-card-subtitle>
+                                <mat-card-content>
+                                    {{ recipe['description'] }}
+                                </mat-card-content>
+                                <mat-card-actions>
+                                    <button mat-button class="btn-recipe-card"
+                                        routerLink="/recipes/view-recipe/{{ recipe['id'] }}">Ver
+                                        receta</button>
+                                </mat-card-actions>
+                            </mat-card>
+                        </div>
+                    </div>
+                </div>
+            </mat-tab>
+
+            <mat-tab>
+                <ng-template mat-tab-label>
+                    <span class="item-count">{{ savedRecipesCount }}</span><br>
+                    <span class="item-name">Recetas guardadas</span>
+                </ng-template>
+                <div class="container mat-tab-container">
+                    <h3>Recetas guardadas</h3>
+                    <div class="row">
+                        <div *ngIf="savedRecipesList.length == 0; else ola">
+                            <p>No tienes ninguna receta agregada en tu lista de favoritos</p>
+                        </div>
+                        <ng-template #ola>
+                            <div class="col-auto" *ngFor="let recipe of savedRecipesList; let i = index">
+                                <mat-card class="recipe-card">
+                                    <mat-card-title>
+                                        <div class="row">
+                                            <div class="col">
+                                                {{ recipe['name'] }}
+                                            </div>
+                                            <div class="col-auto">
+                                                <button mat-icon-button [matMenuTriggerFor]="menu">
+                                                    <mat-icon class="mat-icon-color">more_vert</mat-icon>
+                                                </button>
+                                                <mat-menu #menu="matMenu">
+                                                    <button mat-menu-item (click)="deleteRecipeSaved(savedRecipe[i]['id'])">
+                                                        <mat-icon>delete</mat-icon>
+                                                        Eliminar de lista
+                                                    </button>
+                                                </mat-menu>
+                                            </div>
+                                        </div>
+                                    </mat-card-title>
+                                    <mat-card-subtitle>
+                                        {{ recipe['dateCreated'] }}
+                                    </mat-card-subtitle>
+                                    <mat-card-content>
+                                        {{ recipe['description'] }}
+                                    </mat-card-content>
+                                    <mat-card-actions>
+                                        <button mat-button class="btn-recipe-card"
+                                            routerLink="/recipes/view-recipe/{{ recipe['id'] }}">Ver
+                                            receta</button>
+                                    </mat-card-actions>
+                                </mat-card>
+                            </div>
+                        </ng-template>
+                    </div>
+                </div>
+            </mat-tab>
+
+            <mat-tab>
+                <ng-template mat-tab-label>
+                    <span class="item-count">2</span><br>
+                    <span class="item-name">Ingredientes excluidos</span>
+                </ng-template>
+                <div class="container mat-tab-container">
+                    <h3>Ingredientes excluidos</h3>
+                </div>
+            </mat-tab>
+        </mat-tab-group>
+    </div>
 </div>
