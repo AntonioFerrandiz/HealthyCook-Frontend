@@ -99,7 +99,6 @@ export class ViewRecipeComponent implements OnInit {
     const recipesSaved: RecipesSaved = {
       recipeSavedID: this.recipeID,
     }
-    console.log(recipesSaved)
     this.recipesSavedService.VerifyRecipeSaved(this.recipeID, 1).subscribe(data => {
       if (data) {
         this.toastr.error('Ya has guardado esta receta anteriormente', 'Error')
