@@ -82,7 +82,8 @@
                                                     <mat-icon class="mat-icon-color">more_vert</mat-icon>
                                                 </button>
                                                 <mat-menu #menu="matMenu">
-                                                    <button mat-menu-item (click)="deleteRecipeSaved(savedRecipe[i]['id'])">
+                                                    <button mat-menu-item
+                                                        (click)="deleteRecipeSaved(savedRecipe[i]['id'])">
                                                         <mat-icon>delete</mat-icon>
                                                         Eliminar de lista
                                                     </button>
@@ -110,11 +111,47 @@
 
             <mat-tab>
                 <ng-template mat-tab-label>
-                    <span class="item-count">2</span><br>
+                    <span class="item-count">{{ ingredientsExcludedCount }}</span><br>
                     <span class="item-name">Ingredientes excluidos</span>
                 </ng-template>
                 <div class="container mat-tab-container">
                     <h3>Ingredientes excluidos</h3>
+                    <span>Agrega un ingrediente que quieres que no contengan las recetas cuando realices una
+                        búsqueda</span>
+                    <form autocomplete="off" [formGroup]="dataExcludedIngredient" (ngSubmit)="addExcludedIngredient()">
+                        <div class="row">
+                            <div class="col-auto ">
+                                <mat-form-field appearance="outline" class="recipe-input">
+                                    <mat-label>Nombre del ingrediente</mat-label>
+                                    <input matInput #input formControlName="excludedIngredient">
+                                    <mat-error *ngIf="dataExcludedIngredient.get('excludedIngredient').hasError('required') && 
+                                    dataExcludedIngredient.get('excludedIngredient').touched">Debes agregar un
+                                        ingrediente</mat-error>
+                                </mat-form-field>
+                            </div>
+                            <div class="col">
+                                <button mat-raised-button class="btn-add" [disabled]="dataExcludedIngredient.invalid"
+                                    type="submit">Agregar</button>
+                            </div>
+                        </div>
+                    </form>
+                    <hr>
+                    <div class="excludedIngredientsContainer">
+                        <span *ngIf="ingredientsExcludedList.length == 0; else iel">No tienes ningún ingrediente
+                            agregado en tu lista</span>
+                        <ng-template #iel>
+                            <mat-list class="row" *ngFor="let ingredient of ingredientsExcludedList">
+                                <mat-list-item>
+                                    {{ ingredient['ingredientName'] }}
+                                    <span class="spacer"></span>
+                                    <span flex></span>
+                                    <button mat-icon-button class="btn-delete" (click)="deleteExcludedIngredient(ingredient['id'])">
+                                        <mat-icon>delete_outlined</mat-icon>
+                                    </button>
+                                </mat-list-item>
+                            </mat-list>
+                        </ng-template>
+                    </div>
                 </div>
             </mat-tab>
         </mat-tab-group>

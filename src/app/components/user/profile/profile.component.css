@@ -53,33 +53,74 @@
     flex: 1 0 100% !important;
     justify-content: center !important;
 }
-.item-count{
+
+.item-count {
     font-size: 1.1rem;
     font-weight: bold;
 }
-.item-name{
+
+.item-name {
     font-size: 0.85rem;
 }
-.mat-tab-container{
+
+.mat-tab-container {
     margin-top: 2rem;
-    font-family: 'Oxygen', sans-serif;   
+    font-family: 'Oxygen', sans-serif;
 }
-.mat-tab-container h3{
+
+.mat-tab-container h3 {
     font-weight: 500;
     font-size: 1.5rem;
 }
-.recipe-card{
-    font-family: 'Oxygen', sans-serif;   
+
+.recipe-card {
+    font-family: 'Oxygen', sans-serif;
     width: 20rem;
 }
-.btn-recipe-card{
+
+.btn-recipe-card {
     background-color: #E74E00;
     color: #FFF;
     border-radius: 5rem;
 }
-mat-card mat-title{
+
+mat-card mat-title {
     font-weight: 700;
 }
-.mat-icon-color{
+
+.mat-icon-color {
     color: #E74E00
+}
+
+::ng-deep .mat-tab-group.mat-primary .mat-ink-bar {
+    background-color: #E74E00 !important;
+}
+
+::ng-deep .mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick {
+    color: #E74E00 !important;
+}
+
+::ng-deep .mat-focused .mat-form-field-label {
+    /*change color of label*/
+    color: #E74E00 !important;
+}
+
+.btn-add {
+    font-family: 'Oxygen', sans-serif;
+    font-weight: 700;
+    /* padding: .35rem 1rem; */
+    background-color: #E74E00;
+    color: #FFF;
+    margin-top: .2rem;
+}
+
+.ola {
+    margin-top: auto;
+    margin-bottom: auto;
+}
+.spacer {
+    flex: 1 1 auto;
+  }
+.btn-delete:hover{
+    color: #F94C66;
 }
