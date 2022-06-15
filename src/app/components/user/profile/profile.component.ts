@@ -94,7 +94,7 @@ export class ProfileComponent implements OnInit {
     }
   
     this.excludedIngredientService.saveExcludedIngredients(excludedIngredients).subscribe(data => {
-      console.log(data)
+      this.toastr.success('El ingrediente se agrego a la lista de ingredientes excluidos')
       this.getExcludedIngredients()
     }, error => {
       this.toastr.error('Hubo un error, intenta más tarde.', 'Error')
