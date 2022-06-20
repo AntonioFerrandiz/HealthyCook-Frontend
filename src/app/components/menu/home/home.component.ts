@@ -80,7 +80,6 @@ export class HomeComponent implements OnInit {
     if (this.ingredients.length === 0) {
       this.toastr.warning('Debe ingresar al menos un ingrediente para realizar la busqueda', '')
     } else {
-      this.shareRecipesFoundService.recipesFoundList = this.recipesFound
       this.shareIngredientsService.ingredientsList = this.ingredients
       this.router.navigate(['/recipes/recipes-found'])
     }
