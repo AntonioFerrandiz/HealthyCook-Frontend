@@ -97,7 +97,11 @@ export class ProfileComponent implements OnInit {
       this.toastr.success('El ingrediente se agrego a la lista de ingredientes excluidos')
       this.getExcludedIngredients()
     }, error => {
-      this.toastr.error('Hubo un error, intenta más tarde.', 'Error')
+      if(error.status === 400){
+        this.toastr.warning(`${excludedIngredients.ingredientName} ya se encuentra en tu lista`, 'Error')
+      }else {
+        this.toastr.error('Hubo un error, intenta más tarde.', 'Error')
+      }
     })
   }
   getExcludedIngredients(){

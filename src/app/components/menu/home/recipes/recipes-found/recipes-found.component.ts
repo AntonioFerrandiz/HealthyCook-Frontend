@@ -3,7 +3,6 @@ import { ToastrService } from 'ngx-toastr';
 import { ExcludedIngredientsService } from 'src/app/services/excluded-ingredients.service';
 import { RecipeService } from 'src/app/services/recipe.service';
 import { ShareIngredientsService } from 'src/app/services/share-ingredients.service';
-import { ShareRecipesFoundService } from 'src/app/services/share-recipes-found.service';
 
 @Component({
   selector: 'app-recipes-found',
@@ -34,18 +33,16 @@ export class RecipesFoundComponent implements OnInit {
       })
       var ingredientsArray = this.ingredients
       var ingredientsList = ingredientsArray.values()
-      if(this.excludedIngredients.length == 0){
+      if (this.excludedIngredients.length == 0) {
         this.excludedIngredients.push('')
       }
       var excludedIngredientsArray = this.excludedIngredients
       var excludedIngredientsList = excludedIngredientsArray.values()
-      
+
       for (let ingredient of ingredientsList) {
-        for(let excludedIngredient of excludedIngredientsList){
-          this.recipeService.SearchRecipeByIngredient(ingredient, excludedIngredient).subscribe(data => {
-            if(ingredient == excludedIngredient){
-              this.toastr.warning('¿Buscando recetas con ingredientes que tú mismo excluiste? 🤔', '')
-            } else {
+        for (let excludedIngredient of excludedIngredientsList) {
+          try {
+            this.recipeService.SearchRecipeByIngredient(ingredient, excludedIngredient).subscribe(data => {
               if (data.length == 0) {
                 this.toastr.error("No se han encontrado recetas que contengan " + ingredient)
                 this.ingredientsNotFound.push(ingredient)
@@ -53,8 +50,14 @@ export class RecipesFoundComponent implements OnInit {
                 this.recipesFound.push(data)
                 console.log(data)
               }
-            }         
-          })
+            }, error => {
+              if (error.status === 400) {
+                this.toastr.warning(`¿Buscando recetas con ingredientes que tú mismo excluiste? 🤔`, 'Error')
+              } else {
+                this.toastr.error('Hubo un error, intenta más tarde.', 'Error')
+              }
+            })
+          } catch (error) {}
         }
       }
     })
