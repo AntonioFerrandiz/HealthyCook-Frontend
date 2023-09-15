@@ -17,6 +17,11 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ProfileComponent } from './components/user/profile/profile.component';
 import { RecipesFoundComponent } from './components/menu/home/recipes/recipes-found/recipes-found.component';
 import { SearchRecipesComponent } from './components/menu/home/recipes/search-recipes/search-recipes.component';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatInputModule } from '@angular/material/input';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 @NgModule({
   declarations: [
@@ -36,7 +41,12 @@ import { SearchRecipesComponent } from './components/menu/home/recipes/search-re
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    SharedModule, HttpClientModule, NgbModule
+    SharedModule, HttpClientModule, NgbModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatInputModule,
+    ReactiveFormsModule, 
+    MatCheckboxModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

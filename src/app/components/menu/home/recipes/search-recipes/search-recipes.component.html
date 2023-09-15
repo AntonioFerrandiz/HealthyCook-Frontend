@@ -1,4 +1,20 @@
 <div style="min-height: 90vh;" class="container mt-4">
-    <p>search-recipes works!</p>
-</div>
-
+    <mat-card-content>
+      <form [formGroup]="searchForm">
+        <mat-form-field appearance="fill" class="recipe-input">
+          <input matInput #input formControlName="searchQuery" placeholder="Buscar recetas">
+        </mat-form-field>
+        <div class="checkbox-container">
+          <mat-checkbox formControlName="easy">Fácil</mat-checkbox>
+          <mat-checkbox formControlName="medium">Intermedio</mat-checkbox>
+          <mat-checkbox formControlName="hard">Difícil</mat-checkbox>
+        </div>
+        <mat-form-field appearance="fill" class="recipe-input">
+          <input matInput [matDatepicker]="picker" formControlName="selectedDate" placeholder="Seleccionar fecha">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+      </form>
+    </mat-card-content>
+  </div>
+  

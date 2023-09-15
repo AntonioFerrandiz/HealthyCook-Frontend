@@ -1,0 +1,75 @@
+/* Agrega tus estilos personalizados aquí */
+
+.mat-card {
+    margin: 2rem 0;
+    box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px !important;
+  }
+  
+  .recipe-input {
+    width: 100%;
+  }
+  
+  .mr-0 {
+    margin-right: 0;
+  }
+  
+  .ml-auto {
+    margin-left: auto;
+  }
+  
+  .d-block {
+    display: block;
+  }
+  
+  .recipe-details-input {
+    width: 100%;
+  }
+  
+  .form-title {
+    border-left: 5px #E74E00 solid;
+    padding: 0.25rem;
+    margin-left: 0.5rem;
+    margin-bottom: 1.25rem;
+  }
+  
+  .form-title h3 {
+    font-family: 'Oxygen', sans-serif;
+    color: #121212;
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin: 1rem 0;
+  }
+  
+  .btn-finished {
+    margin-top: 0.25rem;
+    background-color: #E74E00;
+    color: #FFF;
+  }
+
+  /* Estilos para el mat-checkbox */
+.mat-checkbox-container {
+    display: flex;
+    align-items: center;
+    gap: 8px; /* Espacio entre el checkbox y el texto */
+  }
+  
+  .mat-checkbox-label {
+    font-size: 16px;
+    color: #333; /* Color del texto */
+  }
+  
+  .mat-checkbox-input {
+    cursor: pointer; /* Cambia el cursor al pasar por encima */
+  }
+  
+  /* Estilos para el estado "checked" del mat-checkbox */
+  .mat-checkbox-input:checked + .mat-checkbox-frame {
+    background-color: #E74E00; /* Color de fondo cuando está marcado */
+    border-color: #E74E00; /* Color del borde cuando está marcado */
+  }
+  
+  .mat-checkbox-input:checked + .mat-checkbox-frame::before {
+    background-color: #FFF; /* Color del fondo del icono de marca de verificación */
+    border-color: #E74E00; /* Color del borde del icono de marca de verificación */
+  }
+  
