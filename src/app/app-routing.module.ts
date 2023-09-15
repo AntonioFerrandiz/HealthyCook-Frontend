@@ -7,6 +7,7 @@ import { RecipesComponent } from './components/menu/home/recipes/recipes.compone
 import { ViewRecipeComponent } from './components/menu/home/recipes/view-recipe/view-recipe.component';
 import { RestaurantsComponent } from './components/menu/home/restaurants/restaurants.component';
 import { ProfileComponent } from './components/user/profile/profile.component';
+import { SearchRecipesComponent } from './components/menu/home/recipes/search-recipes/search-recipes.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -17,7 +18,8 @@ const routes: Routes = [
   { path: 'recipes/create-recipe', component: CreateRecipeComponent },
   { path: 'recipes/recipes-found', component: RecipesFoundComponent},
   { path: 'restaurants', component: RestaurantsComponent },
-  { path: 'profile', component: ProfileComponent}
+  { path: 'profile', component: ProfileComponent},
+  { path: 'search', component: SearchRecipesComponent},
 ];
 
 @NgModule({

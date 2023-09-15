@@ -16,6 +16,7 @@ import { CreateRecipeComponent } from './components/menu/home/recipes/create-rec
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ProfileComponent } from './components/user/profile/profile.component';
 import { RecipesFoundComponent } from './components/menu/home/recipes/recipes-found/recipes-found.component';
+import { SearchRecipesComponent } from './components/menu/home/recipes/search-recipes/search-recipes.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { RecipesFoundComponent } from './components/menu/home/recipes/recipes-fo
     ViewRecipeComponent,
     CreateRecipeComponent,
     ProfileComponent,
-    RecipesFoundComponent
+    RecipesFoundComponent,
+    SearchRecipesComponent
   ],
   imports: [
     BrowserModule,
