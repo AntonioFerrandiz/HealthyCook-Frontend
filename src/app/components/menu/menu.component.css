@@ -7,3 +7,14 @@
   border-bottom: 1px solid #E74E00;
   text-align: center;
 }
+
+.app-name{
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #3d3d3d;
+  margin: 1rem 0;
+}
+
+.nav-item-text{
+  font-size: 20px;
+}

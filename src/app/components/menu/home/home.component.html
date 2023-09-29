@@ -5,7 +5,7 @@
                 <div class="container-menu img img-1" (click)="redirectToDespensa()">
                     <div class="container-menu-text">
                         <div class="row">
-                            <div class="col"><span>Mi Despensa</span></div>
+                            <div class="col"><span style="font-size: 18px;">Mi Despensa</span></div>
                             <div class="col-auto" style="padding-right: 5rem;">
                                 <mat-icon>chevron_right</mat-icon>
                             </div>
@@ -17,7 +17,7 @@
                 <div class="container-menu img img-2" (click)="redirectToRecipes()">
                     <div class="container-menu-text">
                         <div class="row">
-                            <div class="col"><span>Recetas</span></div>
+                            <div class="col"><span style="font-size: 18px;">Recetas</span></div>
                             <div class="col-auto" style="padding-right: 5rem;">
                                 <mat-icon>chevron_right</mat-icon>
                             </div>
@@ -29,7 +29,7 @@
                 <div class="container-menu img img-3" (click)="redirectToRestaurants()">
                     <div class="container-menu-text">
                         <div class="row">
-                            <div class="col"><span>Restaurantes</span></div>
+                            <div class="col"><span style="font-size: 18px;">Restaurantes</span></div>
                             <div class="col-auto" style="padding-right: 5rem;">
                                 <mat-icon>chevron_right</mat-icon>
                             </div>
@@ -56,7 +56,7 @@
                 <input type="text" class="form-control" [(ngModel)]="ingredient" [ngModelOptions]="{standalone: true}">
                 <div class="input-group-append">
                     <button class="input-group-text btn-add-ingredient" type="button" (click)="addIngredient(); ingredient=''">
-                        <mat-icon>add</mat-icon>
+                        <mat-icon style="margin-right: 12px;">add</mat-icon>
                     </button>
                 </div>
                 <div class="input-group-append">
@@ -70,7 +70,7 @@
         <div class="ingredients-chips">
             <mat-chip-list>
                 <mat-chip *ngFor="let ingredient of ingredients" (removed)="removeIngredient(ingredient)">
-                    {{ ingredient }}
+                    <span class="ingredient">{{ ingredient }}</span>
                     <button matChipRemove>
                         <mat-icon [ngStyle]="{'color': '#E74E00'}">backspace</mat-icon>
                     </button>
@@ -104,7 +104,7 @@
         <div class="row" *ngIf="recipeList.length < 5">
             <div class="col text-center">
                 <span class="error-message">{{ errorMessage }}</span>
-                <div><button mat-raised-button routerLink="../recipes/create-recipe" class="btn-create">Agrega tú
+                <div><button mat-raised-button routerLink="../recipes/create-recipe" class="btn-create">Agrega tu
                         receta</button></div>
             </div>
         </div>

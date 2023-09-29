@@ -23,16 +23,16 @@
     background-repeat: no-repeat;
     background-size: cover;
     object-fit: contain;
-    transition: .3s;
+    transition: 400ms;
 
 }
 
 .img-1:hover {
-    background-size: 105%;
+    background-size: 100%;
     background-repeat: no-repeat;
     object-fit: contain;
-    transform: scale(1);
-    transition: all 150ms ease-in-out;
+    transform: scale(1.1);
+    transition: all 400ms ease-in-out;
 }
 
 .img-2 {
@@ -40,14 +40,15 @@
     background-repeat: no-repeat;
     background-size: cover;
     object-fit: contain;
+    transition: 400ms;
 }
 
 .img-2:hover {
-    background-size: 105%;
+    background-size: 100%;
     background-repeat: no-repeat;
     object-fit: contain;
-    transform: scale(1);
-    transition: all 150ms ease-in-out;
+    transform: scale(1.1);
+    transition: all 400ms ease-in-out;
 }
 
 .img-3 {
@@ -55,14 +56,15 @@
     background-repeat: no-repeat;
     background-size: cover;
     object-fit: contain;
+    transition: 400ms;
 }
 
 .img-3:hover {
-    background-size: 105%;
+    background-size: 100%;
     background-repeat: no-repeat;
     object-fit: contain;
-    transform: scale(1);
-    transition: all 150ms ease-in-out;
+    transform: scale(1.1);
+    transition: all 400ms ease-in-out;
 }
 
 .container-menu-text {
@@ -102,8 +104,9 @@
 }
 
 .search-container p {
-    font-size: 1.5rem;
+    font-size: 1.6rem;
     font-weight: 300;
+    padding: 15px;
 }
 
 ::ng-deep .mat-form-field-infix {
@@ -128,10 +131,17 @@
     text-align: center;
 }
 
+.ingredient{
+    font-size: 20px;
+    font-weight: 500;
+}
+
 .form-control {
     background-color: #EEE;
     border: none;
     padding: 1rem .5rem;
+    font-size: 20px;
+    height: 3.5rem;
 }
 
 .input-group-append button {
@@ -236,14 +246,17 @@
     color: #121212;
 }
 .btn-create {
-    margin-top: .5rem;
+    margin: .7rem;
     background-color: #E74E00;
     color: #FFF;
+    border-radius: 20px;
+    font-size: large;
+    font-weight: 400;
 }
 .five-recipes-title{
     font-family: 'Oxygen', sans-serif;
     text-align: center;
-    font-size: 1.5rem;
+    font-size: 1.9rem;
     font-weight: 700;
     margin: .25rem 0;
 }
