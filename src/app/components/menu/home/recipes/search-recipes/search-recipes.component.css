@@ -47,29 +47,42 @@
   }
 
   /* Estilos para el mat-checkbox */
-.mat-checkbox-container {
+.checkbox-container {
     display: flex;
-    align-items: center;
-    gap: 8px; /* Espacio entre el checkbox y el texto */
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center; /* Centra verticalmente */
+    margin-top: 20px; /* Ajusta el margen superior según sea necesario */
+    margin-bottom: 20px; /* Ajusta el margen inferior según sea necesario */
+    background-color: #f2f2f2; /* Color de fondo */
+    border: 1px solid #ccc; /* Borde */
+    border-radius: 4px; /* Bordes redondeados */
+    padding: 10px; /* Espaciado interno */
+    width: 300px; /* Ancho del cuadro del checkbox */
+    height: relative; /* Altura del cuadro del checkbox */
+    border-width: 2px; /* Ancho del borde del cuadro del checkbox */
   }
-  
-  .mat-checkbox-label {
-    font-size: 16px;
-    color: #333; /* Color del texto */
-  }
-  
-  .mat-checkbox-input {
-    cursor: pointer; /* Cambia el cursor al pasar por encima */
-  }
-  
-  /* Estilos para el estado "checked" del mat-checkbox */
-  .mat-checkbox-input:checked + .mat-checkbox-frame {
-    background-color: #E74E00; /* Color de fondo cuando está marcado */
-    border-color: #E74E00; /* Color del borde cuando está marcado */
-  }
-  
-  .mat-checkbox-input:checked + .mat-checkbox-frame::before {
-    background-color: #FFF; /* Color del fondo del icono de marca de verificación */
-    border-color: #E74E00; /* Color del borde del icono de marca de verificación */
-  }
+.container {
+  width:300px
+}
+
+  /* Estilo del checkbox personalizado cuando está marcado */
+.mat-checkbox-checked .mat-checkbox-background {
+  background-color: #E74E00; /* Color de fondo cuando está encendido */
+  border-color: #E74E00; /* Color del borde cuando está encendido */
+}
+
+/* Estilo del icono de marca de verificación */
+.mat-checkbox-checked .mat-checkbox-inner-container::after {
+  content: "\2714"; /* Símbolo de marca de verificación Unicode */
+  font-size: 20px; /* Tamaño del icono */
+  color: #fff; /* Color del icono cuando está marcado */
+}
+
+/* Estilo del label del checkbox */
+.mat-checkbox-label {
+  font-size: 16px; /* Tamaño de fuente */
+  color: #333; /* Color del texto */
+  margin-left: 8px; /* Espaciado entre el icono y el texto */
+}
+
   
