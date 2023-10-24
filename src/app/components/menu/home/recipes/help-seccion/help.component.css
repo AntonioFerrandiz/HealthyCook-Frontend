@@ -1,0 +1,20 @@
+.form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40vh; /* Esto ajusta la altura para llenar la pantalla verticalmente */
+    padding: 20px; /* Agrega espacio alrededor del formulario */
+  }
+  
+  .Formulario-Consulta {
+    margin: auto;
+    width: 80%; /* Asegura que el formulario ocupe todo el ancho disponible */
+  }
+
+  .Input{
+    width: 100vh;
+  }
+
+  .container.mt-4{
+    overflow: hidden;
+  }
