@@ -22,6 +22,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { HelpComponent } from './components/menu/home/recipes/help-seccion/help.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     CreateRecipeComponent,
     ProfileComponent,
     RecipesFoundComponent,
-    SearchRecipesComponent
+    SearchRecipesComponent,
+    HelpComponent
   ],
   imports: [
     BrowserModule,
