@@ -1,0 +1,25 @@
+<h1 mat-dialog-title>Iniciar Sesión</h1>
+
+<mat-dialog-content>
+  <mat-card>
+    <form [formGroup]="loginForm" novalidate (ngSubmit)="onSubmit(loginForm.value)">
+      <mat-form-field appearance="outline">
+        <mat-label>Email</mat-label>
+        <input matInput placeholder="Email" formControlName="user">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Contraseña</mat-label>
+        <input matInput [type]="hide ? 'password' : 'text'" formControlName="pass">
+        <button mat-icon-button matSuffix (click)="hide = !hide">
+          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+      </mat-form-field>
+    </form>
+  </mat-card>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-raised-button color="primary" type="submit" [disabled]="loginForm.invalid" >Ingresar</button>
+  <button mat-button mat-dialog-close>Cancelar</button>
+</mat-dialog-actions>
