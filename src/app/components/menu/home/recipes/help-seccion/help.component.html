@@ -5,12 +5,12 @@
         <ul>
           <li>
             <strong>¿Cómo puedo publicar una receta?</strong><br>
-            Para publicar una receta, ve a la sección de "Recetas" y en la parte superior habra un botón "Agrega tu receta", que al 
+            Para publicar una receta, ve a la sección de "Recetas" y en la parte superior habra un botón "Agrega tu receta", que al
             presionarlo te aparecera la pantalla donde podras empezar a publicar tu receta.
           </li>
           <li>
             <strong>¿Cómo puedo buscar recetas específicas?</strong><br>
-            Hay 2 maneras, la primera es en la sección de "Inicio", donde puedes poner los ingredientes que quieres y agregarlos a 
+            Hay 2 maneras, la primera es en la sección de "Inicio", donde puedes poner los ingredientes que quieres y agregarlos a
             la búsqueda, la segunda es en la sección de "Buscar", donde puedes buscar por diferentes filtros que elijas.
           </li>
           <li>
@@ -20,19 +20,19 @@
           </li>
           <!-- Agrega más preguntas y respuestas aquí -->
         </ul>
-      
+
         <h2>Guía de Uso</h2>
         <p>Nuestra guía de uso detallada te mostrará cómo sacar el máximo provecho de todas las características de nuestra página de recetas:</p>
         <ol>
           <li>
-            <strong>Inicio:</strong> En la página de inicio, encontrarás las recetas más populares. Puedes filtrar las recetas por 
+            <strong>Inicio:</strong> En la página de inicio, encontrarás las recetas más populares. Puedes filtrar las recetas por
             ingredientes y también puedes dirigirte a "Mi Despensa", "Recetas" o "Restaurantes" en la parte superior de la página.
           </li>
           <li>
             <strong>Dispensa:</strong> Si deseas compartir tus propias recetas, ve a la sección "Publicar Receta" y sigue los pasos indicados.
           </li>
           <li>
-            <strong>Recetas:</strong> En esta sección puedes encontrar las recetas mas populares, las recetas de hoy y las verificadas 
+            <strong>Recetas:</strong> En esta sección puedes encontrar las recetas mas populares, las recetas de hoy y las verificadas
             por el chef,por otro lado, puede empezar a publicar tu receta con el botón "Agrega tu receta".
           </li>
           <li>
@@ -56,26 +56,45 @@
           </li>
           <!-- Agrega más instrucciones sobre el uso de tu sitio aquí -->
         </ol>
-      
+
         <div style="margin-top: 20px;">
             <h2>Contáctanos</h2>
             <p>Si tienes alguna consulta o necesitas ayuda adicional, por favor, déjanos un mensaje:</p>
-            
+
             <div class="form-container">
                 <mat-card-content class="Formulario-Consulta">
                     <form [formGroup]="helpForm" (ngSubmit)="onSubmit()">
-                      <mat-form-field class="Input">
+                      <mat-form-field class="Input" style="margin: 1vh">
                         <input matInput placeholder="Título" formControlName="title" required>
                         <mat-hint *ngIf="helpForm.get('title').hasError('required')">El título es obligatorio.</mat-hint>
                         <mat-hint *ngIf="helpForm.get('title').hasError('maxlength')">El título no debe superar los 50 caracteres.</mat-hint>
                       </mat-form-field>
-                
-                      <mat-form-field class="Input">
+
+                      <div style="display: inline-block;">
+                        <mat-form-field style="margin: 1vh">
+                          <mat-label>Prioridad</mat-label>
+                          <mat-select>
+                            <mat-option *ngFor="let option of options_priority" [value]="option">
+                              {{option.name}}
+                            </mat-option>
+                          </mat-select>
+                        </mat-form-field>
+                        <mat-form-field style="margin: 1vh;">
+                          <mat-label>Tipo de consulta</mat-label>
+                          <mat-select>
+                            <mat-option *ngFor="let option of options_flags" [value]="option">
+                              {{option.name}}
+                            </mat-option>
+                          </mat-select>
+                        </mat-form-field>
+                      </div>
+
+                      <mat-form-field class="Input" style="margin: 1vh">
                         <textarea matInput placeholder="Descripción" formControlName="description" rows="4" required></textarea>
                         <mat-hint *ngIf="helpForm.get('description').hasError('required')">La descripción es obligatoria.</mat-hint>
                         <mat-hint *ngIf="helpForm.get('description').hasError('maxlength')">La descripción no debe superar los 200 caracteres.</mat-hint>
                       </mat-form-field>
-                
+
                       <div style="text-align: center;">
                         <button type="submit" color="warn" mat-raised-button>Enviar Consulta</button>
                       </div>
