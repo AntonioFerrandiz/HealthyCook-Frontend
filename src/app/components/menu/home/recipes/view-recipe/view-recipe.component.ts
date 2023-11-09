@@ -30,7 +30,12 @@ export class ViewRecipeComponent implements OnInit {
   recipeName: string;
   recipe: any[] = []
   recipeDetails: any[] = []
+  commentsOfRecipe: any[] = []
   ratingRecipeForm = new FormControl(null, Validators.required);
+  newComment = {
+    name: '',
+    comment: ''
+  };
 
   constructor(private recipeService: RecipeService, private recipeDetailsService: RecipeDetailsService,
     private aRoue: ActivatedRoute,
@@ -212,5 +217,9 @@ export class ViewRecipeComponent implements OnInit {
     }
     const pdf = pdfMake.createPdf(pdfDefinition);
     pdf.open()
+  }
+
+  addComment(){
+    
   }
 }
