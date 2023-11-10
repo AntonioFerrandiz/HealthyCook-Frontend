@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
+import {MatChipInputEvent} from "@angular/material/chips";
+import {COMMA, ENTER} from "@angular/cdk/keycodes";
 
 @Component({
   selector: 'app-help',
@@ -10,6 +12,23 @@ import { MatInputModule } from '@angular/material/input';
 })
 export class HelpComponent implements OnInit {
   helpForm: FormGroup;
+
+  options_priority = [
+    {name: 'Bajo'},
+    {name: 'Medio'},
+    {name: 'Alto'},
+    {name: 'Urgente'},
+
+  ];
+
+  options_flags = [
+    {name: 'Cuenta'},
+    {name: 'Configuración'},
+    {name: 'Error en busqueda'},
+    {name: 'Problemas de credenciales'},
+    {name: 'Error de datos'},
+    {name: 'Problemas legales'},
+  ];
 
   constructor(private fb: FormBuilder) {
     this.helpForm = this.fb.group({

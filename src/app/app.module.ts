@@ -23,6 +23,8 @@ import { MatInputModule } from '@angular/material/input';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { HelpComponent } from './components/menu/home/recipes/help-seccion/help.component';
+import { LoginDialogComponent } from './components/menu/account/login-dialog/login-dialog.component';
+import { RegisterDialogComponent } from './components/menu/account/register-dialog/register-dialog.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +39,9 @@ import { HelpComponent } from './components/menu/home/recipes/help-seccion/help.
     ProfileComponent,
     RecipesFoundComponent,
     SearchRecipesComponent,
-    HelpComponent
+    HelpComponent,
+    LoginDialogComponent,
+    RegisterDialogComponent
   ],
   imports: [
     BrowserModule,

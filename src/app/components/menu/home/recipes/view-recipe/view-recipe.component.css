@@ -107,3 +107,53 @@ ngb-rating .sr-only {
 .btn-bb:hover {
     color: #E74E00;
 }
+
+.comment {
+    background-color: #f7f7f7;
+    border: 1px solid #ddd;
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 5px;
+  }
+  
+  .comment-info h4 {
+    color: #333;
+    margin: 0;
+  }
+  
+  .comment-text p {
+    color: #555;
+    margin: 0;
+  }
+  
+  .add-comment {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    padding: 15px;
+    border-radius: 5px;
+    margin-top: 20px;
+  }
+  
+  .comment-form .form-group {
+    margin: 10px 0;
+  }
+  
+  .comment-form input, .comment-form textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+  }
+  
+  .comment-form button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+  }
+  
+  .comment-form button:hover {
+    background-color: #0056b3;
+  }

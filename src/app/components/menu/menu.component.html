@@ -17,13 +17,25 @@
                     <h4 style="margin:auto;">🍴 {{ recipesName[i] }} 🍴</h4>
                 </button>
             </mat-menu>
-            <!-- <button mat-icon-button >
-                 <mat-icon >favorite_border</mat-icon> 
-            </button> -->
-            
-            <button mat-icon-button>
-                <mat-icon style="font-size: 2.5rem; margin-right: 40%;" [ngStyle]="{'color': '#E74E00'}">account_circle</mat-icon>
+          <button mat-icon-button [matMenuTriggerFor]="accountMenu">
+            <mat-icon style="font-size: 2.5rem; margin-right: 40%;" [ngStyle]="{'color': '#25C54D'}">account_circle</mat-icon>
+          </button>
+          <mat-menu #accountMenu="matMenu" [class.show]="isMenuOpen">
+            <button mat-menu-item (click)="openLoginDialog()" [hidden]="false">
+              <mat-icon>login</mat-icon>
+              <span>Iniciar Sesión</span>
             </button>
+            <button mat-menu-item (click)="openRegisterDialog()" [disabled]="false" [hidden]="false">
+              <mat-icon>app_registration</mat-icon>
+              <span>Registrarme</span>
+            </button>
+            <button mat-menu-item [hidden]="true">
+              <mat-icon>logout</mat-icon>
+              <span>Cerrar Sesión</span>
+            </button>
+
+          </mat-menu>
+
         </div>
     </mat-toolbar>
 

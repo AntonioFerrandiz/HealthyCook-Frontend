@@ -13,7 +13,7 @@ export class RecipesComponent implements OnInit {
   numberOfRecipes: number
   recipesID: any[] = []
   recipesDetails: any[] = []
-  todaysRecipes: any[] = []
+  todaysRecipes: any[] = [{id: 1, name: 'Nombre 1', description: 'Descricion 1', image: '', ingredients: '', steps: '', category: '', date: ''}]
   constructor(private recipeService: RecipeService,
      private recipeDetailsService: RecipeDetailsService) { }
 
