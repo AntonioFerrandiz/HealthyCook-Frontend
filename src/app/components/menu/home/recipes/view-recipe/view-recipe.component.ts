@@ -30,12 +30,7 @@ export class ViewRecipeComponent implements OnInit {
   recipeName: string;
   recipe: any[] = []
   recipeDetails: any[] = []
-  commentsOfRecipe: any[] = []
   ratingRecipeForm = new FormControl(null, Validators.required);
-  newComment = {
-    name: '',
-    comment: ''
-  };
 
   constructor(private recipeService: RecipeService, private recipeDetailsService: RecipeDetailsService,
     private aRoue: ActivatedRoute,
@@ -219,7 +214,21 @@ export class ViewRecipeComponent implements OnInit {
     pdf.open()
   }
 
+  // Comments
+  commentsOfRecipe = [{name: 'Juan', comment: 'Muy buena receta, me encantó', likes:0, liked: false}, {name: 'Pedro', comment: 'Muy buena receta, me encantó',likes:0, liked: 0}];
+  newComment = {
+    comment: ''
+  };
+  commentText: string;
+
   addComment(){
-    
+    console.log('Comment:', this.commentText);
   }
+
+  likeComment(index: number) {
+    if (!this.commentsOfRecipe[index].liked) {
+        this.commentsOfRecipe[index].likes++;
+        this.commentsOfRecipe[index].liked = true;
+    }
+}
 }

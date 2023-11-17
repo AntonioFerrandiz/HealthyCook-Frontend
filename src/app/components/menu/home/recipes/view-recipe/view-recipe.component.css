@@ -108,6 +108,8 @@ ngb-rating .sr-only {
     color: #E74E00;
 }
 
+/* Comments */
+
 .comment {
     background-color: #f7f7f7;
     border: 1px solid #ddd;
@@ -157,3 +159,12 @@ ngb-rating .sr-only {
   .comment-form button:hover {
     background-color: #0056b3;
   }
+
+
+  .comment-likes {
+    margin-top: 10px;
+    }
+
+    mat-form-field{
+        width: 100%;
+    }
