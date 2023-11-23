@@ -124,7 +124,7 @@
                                 <mat-form-field appearance="outline" class="recipe-input">
                                     <mat-label>Nombre del ingrediente</mat-label>
                                     <input matInput #input formControlName="excludedIngredient">
-                                    <mat-error *ngIf="dataExcludedIngredient.get('excludedIngredient').hasError('required') && 
+                                    <mat-error *ngIf="dataExcludedIngredient.get('excludedIngredient').hasError('required') &&
                                     dataExcludedIngredient.get('excludedIngredient').touched">Debes agregar un
                                         ingrediente</mat-error>
                                 </mat-form-field>
@@ -154,6 +154,28 @@
                     </div>
                 </div>
             </mat-tab>
+
+            <mat-tab>
+            <ng-template mat-tab-label>
+              <span class="item-count">{{ ingredientsExcludedCount }}</span><br>
+              <span class="item-name">Usuarios seguidos</span>
+            </ng-template>
+            <div class="container mat-tab-container">
+              <h3>Lista de usuarios</h3>
+              <span>Muestra la lista de los usuarios que deseo saber si publican nuevas recetas</span>
+            </div>
+              <div>
+                <mat-list>
+                  <mat-list-item *ngFor="let item of items">
+                    <h3 matLine>{{item.name}}</h3>
+                    
+                  </mat-list-item>
+                </mat-list>
+              </div>
+
+
+          </mat-tab>
+
         </mat-tab-group>
     </div>
 </div>

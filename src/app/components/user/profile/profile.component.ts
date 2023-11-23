@@ -6,6 +6,7 @@ import { ExcludedIngredientsService } from 'src/app/services/excluded-ingredient
 import { RecipeService } from 'src/app/services/recipe.service';
 import { RecipesSavedService } from 'src/app/services/recipes-saved.service';
 import { UserServiceService } from 'src/app/services/user-service.service';
+import {FollowerService} from "../../../services/follower.service";
 
 @Component({
   selector: 'app-profile',
@@ -13,6 +14,8 @@ import { UserServiceService } from 'src/app/services/user-service.service';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
+  items = [];
+
   userData: any[] = []
   dateCreated: String
   formatedDate: String
@@ -23,14 +26,16 @@ export class ProfileComponent implements OnInit {
   savedRecipe: any[] = []
   savedRecipesList: any[] = [];
   ingredientsExcludedCount: Number;
-  ingredientsExcludedList: any[] = []
-  dataExcludedIngredient: FormGroup
+  ingredientsExcludedList: any[] = [];
+  followers:any[]=[];
+  dataExcludedIngredient: FormGroup;
   constructor(private fb: FormBuilder,
               private userService: UserServiceService,
               private recipeService: RecipeService,
               private recipesSaved: RecipesSavedService,
               private excludedIngredientService: ExcludedIngredientsService,
-              private toastr: ToastrService) { 
+              private toastr: ToastrService,
+              private followerService: FollowerService) {
     this.userID = 1
     this.dataExcludedIngredient = this.fb.group({
       excludedIngredient: ['', [Validators.required]]
@@ -45,6 +50,14 @@ export class ProfileComponent implements OnInit {
     this.getRecipesPublishedByUser()
     this.getRecipesSavedByUser()
     this.getExcludedIngredients()
+    this.GetUserFollowers()
+  }
+  GetUserFollowers():void {
+    this.followerService.getFollowerByUserID(localStorage.getItem("sesion")).subscribe(data => {
+      this.followers = data
+      this.items = this.followers;
+      console.log(this.followers);
+    })
   }
   getUserInformation():void {
     this.userService.SearchUser(this.userID).subscribe(data => {
@@ -57,7 +70,7 @@ export class ProfileComponent implements OnInit {
     this.recipeService.GetListRecipesPublishedByUser(this.userID).subscribe(data => {
       this.publishedRecipesCount = data.length
       this.publishedRecipesList = data
-      
+
     })
   }
   deleteRecipe(recipeID:number):void{
@@ -83,7 +96,7 @@ export class ProfileComponent implements OnInit {
 
   deleteRecipeSaved(recipeSavedID: number):void{
     this.recipesSaved.RemoveRecipeSaved(recipeSavedID).subscribe(data => {
-      this.toastr.success('Receta eliminada exitosamente de la lista de favoritos', '')     
+      this.toastr.success('Receta eliminada exitosamente de la lista de favoritos', '')
       this.getRecipesSavedByUser()
     })
   }
@@ -92,7 +105,7 @@ export class ProfileComponent implements OnInit {
     const excludedIngredients: ExcludedIngredients = {
       ingredientName: this.dataExcludedIngredient.value.excludedIngredient,
     }
-  
+
     this.excludedIngredientService.saveExcludedIngredients(excludedIngredients).subscribe(data => {
       this.toastr.success('El ingrediente se agrego a la lista de ingredientes excluidos')
       this.getExcludedIngredients()
@@ -113,7 +126,7 @@ export class ProfileComponent implements OnInit {
   deleteExcludedIngredient(excludedIngredientID:number){
     console.log(excludedIngredientID)
     this.excludedIngredientService.deleteExcludedIngredients(excludedIngredientID).subscribe(data =>{
-      this.toastr.success('Ingrediente eliminado exitosamente de la lista de ingredientes excluidos', '')     
+      this.toastr.success('Ingrediente eliminado exitosamente de la lista de ingredientes excluidos', '')
       this.getExcludedIngredients()
     }, error => {
       this.toastr.error('Hubo un error, intenta más tarde.', 'Error')
