@@ -6,7 +6,11 @@ import { ExcludedIngredientsService } from 'src/app/services/excluded-ingredient
 import { RecipeService } from 'src/app/services/recipe.service';
 import { RecipesSavedService } from 'src/app/services/recipes-saved.service';
 import { UserServiceService } from 'src/app/services/user-service.service';
-import {FollowerService} from "../../../services/follower.service";
+import { FollowerService } from "../../../services/follower.service";
+
+import { MatDialog } from '@angular/material/dialog';
+import { RegisterDialogComponent } from '../../menu/account/register-dialog/register-dialog.component';
+
 
 @Component({
   selector: 'app-profile',
@@ -35,7 +39,8 @@ export class ProfileComponent implements OnInit {
               private recipesSaved: RecipesSavedService,
               private excludedIngredientService: ExcludedIngredientsService,
               private toastr: ToastrService,
-              private followerService: FollowerService) {
+              private followerService: FollowerService,
+              public dialog: MatDialog,) {
     this.userID = 1
     this.dataExcludedIngredient = this.fb.group({
       excludedIngredient: ['', [Validators.required]]
@@ -131,5 +136,12 @@ export class ProfileComponent implements OnInit {
     }, error => {
       this.toastr.error('Hubo un error, intenta más tarde.', 'Error')
     })
+  }
+  openRegisterDialog() {
+    const dialogRef = this.dialog.open(RegisterDialogComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`); // resultado cuando se cierra
+    });
   }
 }
