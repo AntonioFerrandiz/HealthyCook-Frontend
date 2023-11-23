@@ -6,7 +6,9 @@ import { ExcludedIngredientsService } from 'src/app/services/excluded-ingredient
 import { RecipeService } from 'src/app/services/recipe.service';
 import { RecipesSavedService } from 'src/app/services/recipes-saved.service';
 import { UserServiceService } from 'src/app/services/user-service.service';
-import { FollowerService } from "../../../services/follower.service";
+import {FollowerService} from "../../../services/follower.service";
+import {Follower} from "../../../models/follower";
+
 
 import { MatDialog } from '@angular/material/dialog';
 import { RegisterDialogComponent } from '../../menu/account/register-dialog/register-dialog.component';
@@ -18,7 +20,39 @@ import { RegisterDialogComponent } from '../../menu/account/register-dialog/regi
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
-  items = [];
+
+  items: Follower[] = [
+    {
+      userID: 1,
+      followerUsername: 'Jack Ronaldo',
+      followedUsername: 'Pedro Lopez',
+      followedUserID: '1fge',
+    },
+    {
+      userID: 1,
+      followerUsername: 'Omar mena',
+      followedUsername: 'Pedro Lopez',
+      followedUserID: '1fge',
+    },
+    {
+      userID: 1,
+      followerUsername: 'Tomas nina',
+      followedUsername: 'Pedro Lopez',
+      followedUserID: '1fge',
+    },
+    {
+      userID: 1,
+      followerUsername: 'Maria arruace',
+      followedUsername: 'Pedro Lopez',
+      followedUserID: '1fge',
+    },
+    {
+      userID: 1,
+      followerUsername: 'Mena peña',
+      followedUsername: 'Pedro Lopez',
+      followedUserID: '1fge',
+    },
+  ];
 
   userData: any[] = []
   dateCreated: String
