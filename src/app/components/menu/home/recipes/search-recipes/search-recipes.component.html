@@ -1,5 +1,14 @@
 <div style="min-height: 90vh;" class="container mt-4">
   <mat-card-content>
+    <!-- Búsqueda de recetas por nombre -->
+    <form [formGroup]="searchForm">
+      <div class="container">
+        <mat-form-field appearance="fill" class="recipe-input">
+          <input matInput #input formControlName="recipeName" placeholder="Buscar por nombre de receta">
+        </mat-form-field>
+      </div>
+    </form>
+    
     <!-- Búsqueda de recetas por rango de fechas -->
     <form [formGroup]="searchForm">
       <div class="container">
@@ -27,14 +36,7 @@
       </div>
     </form>
 
-    <!-- Búsqueda de recetas por nombre -->
-    <form [formGroup]="searchForm">
-      <div class="container">
-        <mat-form-field appearance="fill" class="recipe-input">
-          <input matInput #input formControlName="recipeName" placeholder="Buscar por nombre de receta">
-        </mat-form-field>
-      </div>
-    </form>
+    
 
     <!-- Búsqueda de recetas por calorías -->
     <form [formGroup]="searchForm">

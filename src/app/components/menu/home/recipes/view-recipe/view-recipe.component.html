@@ -82,7 +82,6 @@
                     </mat-tab>
                     <mat-tab label="Comentarios">
                         <div class="mat-tab-contain">
-                            <!-- Listado de comentarios -->
                             <div *ngFor="let comment of commentsOfRecipe; let i = index">
                                 <div class="comment">
                                     <div class="comment-info">
@@ -91,22 +90,26 @@
                                     <div class="comment-text">
                                         <p>{{ comment.comment }}</p>
                                     </div>
+                                    <div class="comment-likes">
+                                        <span>{{ comment.likes }}</span>
+                                        <button mat-icon-button [color]="comment.liked ? 'warn' : 'primary'" aria-label="Like button" (click)="likeComment(i)">
+                                            <mat-icon>favorite</mat-icon>
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
                     
                             <!-- Formulario para agregar comentarios -->
                             <div class="add-comment">
-                                <h3>Agregar Comentario</h3>
-                                <form (ngSubmit)="addComment()" class="comment-form">
-                                    <div class="form-group">
-                                        <input type="text" [(ngModel)]="newComment.name" name="name" placeholder="Tu Nombre" required>
-                                    </div>
-                                    <div class="form-group">
-                                        <textarea [(ngModel)]="newComment.comment" name="comment" rows="4" placeholder="Tu Comentario" required></textarea>
-                                    </div>
-                                    <button type="submit" class="btn btn-primary">Enviar Comentario</button>
-                                </form>
+                                <div class="form-group">
+                                    <mat-form-field appearance="outline" class="full-width">
+                                        <mat-label>Comment</mat-label>
+                                        <textarea matInput placeholder="Enter your comment" [(ngModel)]="commentText" name="commentText" required></textarea>
+                                    </mat-form-field>
+                                </div>
+                                <button type="submit" mat-raised-button color="primary" (click)="addComment()">Enviar Comentario</button>
                             </div>
+                            
                         </div>
                     </mat-tab>
                     

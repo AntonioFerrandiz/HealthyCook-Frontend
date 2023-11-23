@@ -124,7 +124,11 @@ mat-card mat-title {
 .btn-delete:hover{
     color: #F94C66;
 }
-.list-card {
-  max-height: 500px;
-  overflow: auto;
-}
+
+
+
+.btn-edit-profile {
+    background-color: #3498db; /* Color de fondo del botón */
+    color: #fff; /* Color del texto del botón */
+    margin-top: 1rem; /* Puedes ajustar el margen según tus necesidades */
+  }
